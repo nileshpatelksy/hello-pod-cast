@@ -11,13 +11,15 @@ import com.hellocode.ui.MainFrame;
  */
 public final class PodCast {
 
+	public static MainFrame main;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new MainFrame().setVisible(true);
+				main = new MainFrame();
+				main.setVisible(true);
 			}
 		});
 		

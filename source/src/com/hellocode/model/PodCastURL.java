@@ -108,7 +108,7 @@ public class PodCastURL extends XMLPodCastURL {
 			for (int i = 0; i < nodes.getLength(); i++) {
 				element = nodes.item(i);
 				tag = element.getNodeName();
-				// System.out.println(""+tag+"="+element.getNodeType()+element.getTextContent());
+				 System.out.println(""+tag+"="+element.getNodeType()+element.getTextContent());
 				if (tag.equalsIgnoreCase("title")) {
 					this.title = element.getTextContent();
 				}
@@ -225,7 +225,7 @@ public class PodCastURL extends XMLPodCastURL {
 	}
 
 	public static void main(String[] args) {
-		String voa = "http://www.voanews.com/podcast/videocastxml_local.cfm?id=677";
+		String voa = "http://downloads.bbc.co.uk/podcasts/radio4/belief/rss.xml";
 		PodCastURL url = new PodCastURL(voa);
 		url.reFreshURL();
 		url.print();
@@ -234,7 +234,7 @@ public class PodCastURL extends XMLPodCastURL {
 
 	@Override
 	public int hashCode() {
-		int result = 0;
+		int result = this.getURL().length()+this.getLabel().length();
 		return result;
 	}
 
@@ -249,11 +249,13 @@ public class PodCastURL extends XMLPodCastURL {
 			return false;
 		}
 		PodCastURL other = (PodCastURL) obj;
-		if (label == null) {
-			if (other.label != null)
+		if (label == null ||other.getLabel() == null) {
 				return false;
 		}
-		if (label.equals(other.label)) {
+		if (URL == null ||other.getURL() == null) {
+			return false;
+	}
+		if (label.equals(other.getLabel())&& this.URL.equalsIgnoreCase(other.getURL())) {
 			return true;
 		} else {
 			return false;

@@ -3,6 +3,7 @@ package com.hellocode.service;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.hellocode.main.PodCast;
 import com.hellocode.util.FileUtil;
 import com.hellocode.util.NetWorkingUtil;
 
@@ -11,29 +12,21 @@ public class DownLoad {
 	private String folder_name;
 
 	// not contain file name.
-
 	private void getFile(String url) {
 		// TODO net.url-file-save to path
-		
+
 		FileUtil.createDir(RunTime.CONFIG.disk_main + File.separator
 				+ folder_name);
 		String name = this.getFileName(url);// copy
-		
-//		String ext = FileUtil.getExtention(name);
-//		if (ext.equalsIgnoreCase("mp3") || ext.equalsIgnoreCase("mp4")) {
-//			// go on
-//		} else {// skip
-//			return;
-//		}
 		String abs_name = RunTime.CONFIG.disk_main + File.separator
 				+ this.folder_name + File.separator + name;
-		
-		System.out.println("$$$$$$:   "+abs_name);
+
+		System.out.println("$$$$$$:   " + abs_name);
 		if (new File(abs_name).exists()) {
 			// skip if had downloaded.
 			return;
 		}
-		
+
 		NetWorkingUtil.getHttpFile(url, abs_name);
 
 	}
@@ -41,8 +34,8 @@ public class DownLoad {
 	// spit url 2 name
 	private String getFileName(String url) {
 		int i = url.lastIndexOf('/');
-		String name = url.substring(i+1);
-		System.out.println("extract file name :== "+name);
+		String name = url.substring(i + 1);
+		System.out.println("extract file name :== " + name);
 		return name;
 	}
 
@@ -82,9 +75,14 @@ public class DownLoad {
 				for (String url : urlList) {
 					DownLoad.this.getFile(url);
 					System.out.println(test + "downloading..." + url);
-					System.out.println("job_count..." + job_count);
+					PodCast.main.lb_info.setText("完成:" + url);
 				}
 				DownLoad.this.sub();
+				PodCast.main.lb_info.setText(job_count + "个下载线程");
+				if (job_count == 0) {
+					PodCast.main.lb_info.setText("任务全部完成");
+				}
+				
 			}
 		});
 		thread.setName(job_count.toString());

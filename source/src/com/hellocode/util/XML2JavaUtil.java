@@ -15,7 +15,6 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 public class XML2JavaUtil {
         
         public static void java2XML(String xmlFile, Config cfg) throws Exception {
-                
                 XStream xs = new XStream();
                 File file = new File(xmlFile);
                 FileOutputStream fs = new FileOutputStream(file.getAbsoluteFile());
