@@ -7,53 +7,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class NetWorkingUtil {
-	public static void main(String[] args) {
-		String sURL = "http://pic.cnblogs.com/face/u35645.jpg";
-		int nStartPos = 0;
-		int nRead = 0;
-		String sName = "book.rar";
-		String sPath = "H:\\";
-		try {
-			URL url = new URL(sURL);
-			// 打开连接
-			HttpURLConnection httpConnection = (HttpURLConnection) url
-					.openConnection();
-			// 获得文件长度
-			long nEndPos = getFileSize(sURL);
-			RandomAccessFile oSavedFile = new RandomAccessFile(sPath + "\\"
-					+ sName, "rw");
-			httpConnection
-					.setRequestProperty("User-Agent", "Internet Explorer");
-			String sProperty = "bytes=" + nStartPos + "-";
-			// 告诉服务器book.rar这个文件从nStartPos字节开始传
-			httpConnection.setRequestProperty("RANGE", sProperty);
-			System.out.println(sProperty);
-			InputStream input = httpConnection.getInputStream();
-			byte[] b = new byte[1024];
-			// 读取网络文件,写入指定的文件中
-			while ((nRead = input.read(b, 0, 1024)) > 0 && nStartPos < nEndPos) {
-				oSavedFile.write(b, 0, nRead);
-				nStartPos += nRead;
-			}
-			httpConnection.disconnect();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	public static void getHttpFile(String http_url, String abs_file_name) {
 		String sURL = http_url;
 		int nStartPos = 0;
 		int nRead = 0;
+
+		URL url = null;
+		HttpURLConnection httpConnection = null;
+		RandomAccessFile oSavedFile = null;
 		try {
-			URL url = new URL(sURL);
+			url = new URL(sURL);
 			// 打开连接
-			HttpURLConnection httpConnection = (HttpURLConnection) url
-					.openConnection();
+			httpConnection = (HttpURLConnection) url.openConnection();
 			// 获得文件长度
 			long nEndPos = getFileSize(sURL);
-			RandomAccessFile oSavedFile = new RandomAccessFile(abs_file_name,
-					"rw");
+			oSavedFile = new RandomAccessFile(abs_file_name, "rw");
 			httpConnection
 					.setRequestProperty("User-Agent", "Internet Explorer");
 			String sProperty = "bytes=" + nStartPos + "-";
@@ -72,8 +41,18 @@ public class NetWorkingUtil {
 			oSavedFile.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				url = null;
+				httpConnection.disconnect();
+				oSavedFile.close();
+				httpConnection = null;
+				oSavedFile = null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		//here shall use finally{}...close something...
+		// here shall use finally{}...close something...
 
 		System.out.println("save file ok =" + abs_file_name);
 

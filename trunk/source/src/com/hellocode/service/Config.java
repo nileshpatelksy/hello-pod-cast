@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.hellocode.model.PodCastURL;
 
 public final class Config {
-	public  String disk_main = "D:\\kankan";
+	public  String disk_main = "C:\\PodCast";
 	public  ArrayList<String> disk_other = new ArrayList<String>();
 	public ArrayList<PodCastURL> feed_au = new ArrayList<PodCastURL>();
 			
