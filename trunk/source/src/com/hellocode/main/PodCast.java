@@ -3,6 +3,7 @@
  */
 package com.hellocode.main;
 
+import com.hellocode.service.RunTime;
 import com.hellocode.ui.MainFrame;
 
 /**
@@ -12,19 +13,23 @@ import com.hellocode.ui.MainFrame;
 public final class PodCast {
 
 	public static MainFrame main;
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				main = new MainFrame();
-				main.setVisible(true);
-			}
-		});
-		
+
+		main = new MainFrame();
+		main.setVisible(true);
+
 		System.out.println("Main...");
-		
+		try {
+			Thread.sleep(500);
+			RunTime.refreshAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
