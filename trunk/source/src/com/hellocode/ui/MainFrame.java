@@ -20,6 +20,7 @@ import java.util.Enumeration;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -90,11 +91,39 @@ public class MainFrame extends javax.swing.JFrame {
 		});
 		this.list_disk.updateUI();
 
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				RunTime.destroy();
-				//System.exit(0);
+
+				// System.exit(0);
 				System.out.println("OUT...");
+				int a = 0;
+				if (RunTime.synchronizing || DownLoad.job_count != 0) {
+					a += JOptionPane.showConfirmDialog(null,
+							"文件下载或正在同步，确定关闭吗？", "information",
+							JOptionPane.YES_NO_OPTION);
+					if (a == 0) {
+						for (Thread t : DownLoad.threads) {
+							if (t.isAlive()) {
+								t.stop();
+							}
+						}
+						RunTime.destroy();
+						System.exit(0); // 关闭
+					}
+				} else {
+					RunTime.destroy();
+					System.exit(0);
+				}
+				// if (DownLoad.job_count != 0) {
+				// a += JOptionPane.showConfirmDialog(null, "文件正在同步，确定关闭吗？",
+				// "information", JOptionPane.YES_NO_OPTION);
+				// if (a == 0) {
+				// System.exit(0); // 关闭
+				// }
+				// }
+
 			}
 		}
 
@@ -151,6 +180,8 @@ public class MainFrame extends javax.swing.JFrame {
 		detail = new javax.swing.JTable();
 		lb_info = new javax.swing.JLabel();
 		btn_download = new javax.swing.JButton();
+		ck_select_all = new javax.swing.JCheckBox();
+		lb_down_load = new javax.swing.JLabel();
 		jPanel3 = new javax.swing.JPanel();
 		jScrollPane1 = new javax.swing.JScrollPane();
 		txt_main_disk = new javax.swing.JTextPane();
@@ -202,7 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_del, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				590, 30, 100, -1));
+				610, 30, 100, -1));
 
 		btn_add_au.setText("Add Feed");
 		btn_add_au.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +274,7 @@ public class MainFrame extends javax.swing.JFrame {
 		lb_info
 				.setText("Welcome! Add your feed, refresh, select & download media....   Enjoy it!");
 		jPanel1.add(lb_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				210, 60, 460, 30));
+				160, 60, 460, 30));
 
 		btn_download.setText("DownLoad");
 		btn_download.addActionListener(new java.awt.event.ActionListener() {
@@ -252,8 +283,24 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_download,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 100,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 100,
 						-1));
+
+		ck_select_all.setText("Select All");
+		ck_select_all.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				ck_select_allActionPerformed(evt);
+			}
+		});
+		jPanel1.add(ck_select_all,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1,
+						-1));
+
+		lb_down_load
+				.setText("                                                                                                              ");
+		jPanel1.add(lb_down_load,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 4, 200,
+						20));
 
 		jTabbedPane1.addTab("PodCastXML", jPanel1);
 
@@ -434,6 +481,27 @@ public class MainFrame extends javax.swing.JFrame {
 
 	// GEN-END:initComponents
 
+	private void ck_select_allActionPerformed(java.awt.event.ActionEvent evt) {
+		if (RunTime.selectedFileName.equalsIgnoreCase("")
+				|| RunTime.selectedFileName == null) {
+			return;
+		}
+		if (this.ck_select_all.isSelected()) {
+			for (int i = 0; i < this.detail.getRowCount(); i++) {
+				JCheckBox bool = (JCheckBox) this.detail.getModel().getValueAt(
+						i, 6);
+				bool.setSelected(true);
+			}
+		} else {
+			for (int i = 0; i < this.detail.getRowCount(); i++) {
+				JCheckBox bool = (JCheckBox) this.detail.getModel().getValueAt(
+						i, 6);
+				bool.setSelected(false);
+			}
+		}
+		this.detail.updateUI();
+	}
+
 	protected void tx_proxy_userActionPerformed(ActionEvent evt) {
 		// TODO Auto-generated method stub
 
@@ -453,7 +521,7 @@ public class MainFrame extends javax.swing.JFrame {
 			RunTime.CONFIG.removeProxy();
 			this.testProxyUI();
 		}
-		
+
 	}
 
 	void testProxyUI() {
@@ -495,10 +563,11 @@ public class MainFrame extends javax.swing.JFrame {
 				}
 			}
 			if (files.size() == 0) {
-				PodCast.main.lb_info.setText("你没选择文件，下面的列表中点击对选框");
+				PodCast.main.lb_down_load.setText("没选择文件");
 				return;
 			}
-			PodCast.main.lb_info.setText("正在下载,请稍候...");
+			PodCast.main.lb_down_load.setText("正在下载,请稍候...");
+			// PodCast.main.lb_info.setText("正在下载,请稍候...");
 		} catch (Exception e) {
 			PodCast.main.lb_info.setText("你没选择文件，或者选择左边树上的feed");
 			return;
@@ -640,16 +709,18 @@ public class MainFrame extends javax.swing.JFrame {
 		DefaultTableModel model = new javax.swing.table.DefaultTableModel();
 		model.setColumnCount(7);
 		model.setColumnIdentifiers(new String[] { "title", "author", "pubTime",
-				"time duration", "isDownLoad", "Tag", "TEST" });
+				"time duration", "length", "TYPE", "Select" });
 		for (MediaItem m : pod.getMedias()) {
-			model.addRow(new Object[] { m.getTitle(), m.getAuthor(),
-					m.getPubData(), m.getDuration(), m.isDownload(),
-					m.getLabel(), new JCheckBox(m.getGUID()) });
+			model
+					.addRow(new Object[] { m.getTitle(), m.getAuthor(),
+							m.getPubData(), m.getDuration(),
+							m.getENCLOSURE_Length(), m.getENCLOSURE_TYPE(),
+							new JCheckBox(m.getENCLOSURE_URL()) });
 		}
 		this.detail.setModel(model);
-		this.detail.getColumn("TEST").setCellEditor(
+		this.detail.getColumn("Select").setCellEditor(
 				new CheckButtonEditor(new JCheckBox()));
-		this.detail.getColumn("TEST").setCellRenderer(new CheckBoxRenderer());
+		this.detail.getColumn("Select").setCellRenderer(new CheckBoxRenderer());
 		this.detail.setEnabled(true);
 		this.detail.addMouseListener(new MouseAdapter() {
 		});
@@ -699,6 +770,7 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 
 	private void btn_refresh_allActionPerformed(java.awt.event.ActionEvent evt) {
+		this.lb_info.setText("正在刷新feeds");
 		RunTime.refreshAll();
 		this.updateTable();
 	}
@@ -762,6 +834,7 @@ public class MainFrame extends javax.swing.JFrame {
 			this.model.removeNodeFromParent(node);
 		JDomPodCastURL url = RunTime.findFeedByName(node.toString());
 		RunTime.CONFIG.feed_au.remove(url);
+		RunTime.selectedFileName = "";
 		return;
 	}
 
@@ -788,7 +861,7 @@ public class MainFrame extends javax.swing.JFrame {
 			this.tx_proxy_pswd.setText(RunTime.CONFIG.proxy_pswd);
 			RunTime.CONFIG.setProxy();
 			this.testProxyUI();
-		}else{
+		} else {
 			this.ck_use_proxy.setSelected(false);
 			this.ck_use_proxy.setText("未使用代理");
 		}
@@ -807,6 +880,7 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JButton btn_refresh_all;
 	private javax.swing.JCheckBox ck_auto_check_disk1;
 	private javax.swing.JCheckBox ck_down_load;
+	private javax.swing.JCheckBox ck_select_all;
 	private javax.swing.JCheckBox ck_use_proxy;
 	private javax.swing.JTable detail;
 	private javax.swing.JButton jButton1;
@@ -824,6 +898,7 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JScrollPane jScrollPane4;
 	private javax.swing.JTabbedPane jTabbedPane1;
 	private javax.swing.JTree jTree1;
+	public javax.swing.JLabel lb_down_load;
 	public javax.swing.JLabel lb_info;
 	public javax.swing.JLabel lb_msg;
 	public javax.swing.JLabel lb_msg1;
