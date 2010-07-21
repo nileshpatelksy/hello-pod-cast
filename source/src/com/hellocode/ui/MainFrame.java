@@ -93,7 +93,7 @@ public class MainFrame extends javax.swing.JFrame {
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				RunTime.destroy();
-				System.exit(0);
+				//System.exit(0);
 				System.out.println("OUT...");
 			}
 		}
