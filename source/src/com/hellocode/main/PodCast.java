@@ -18,8 +18,14 @@ public final class PodCast {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		RunTime.init();
+		
+		try {
+			RunTime.init();
+		} catch (Exception e) {
+			//it must be some severe ERROR
+			RunTime.resetAll();
+			System.exit(-1);
+		}
 
 		main = new MainFrame();
 		main.setVisible(true);
