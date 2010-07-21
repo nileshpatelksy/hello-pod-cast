@@ -33,8 +33,9 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import com.hellocode.main.PodCast;
+import com.hellocode.model.IPodXML;
+import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.model.MediaItem;
-import com.hellocode.model.PodCastURL;
 import com.hellocode.service.DownLoad;
 import com.hellocode.service.FileSyn;
 import com.hellocode.service.RunTime;
@@ -526,7 +527,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void updateTable() {
 
-		PodCastURL pod = RunTime.findFeedByName(RunTime.selectedFileName);
+		JDomPodCastURL pod = RunTime.findFeedByName(RunTime.selectedFileName);
 		if (pod == null) {
 			return;
 		}
@@ -624,7 +625,7 @@ public class MainFrame extends javax.swing.JFrame {
 			return;
 		}
 		//
-		PodCastURL feed = new PodCastURL(url);
+		JDomPodCastURL feed = new JDomPodCastURL(url);
 		feed.setName(label);
 		feed.setCommnet(comment);
 		if (RunTime.findFeedByName(label) != null) {
@@ -654,7 +655,7 @@ public class MainFrame extends javax.swing.JFrame {
 		}
 		if (node.getParent() != null && node.getParent() != this.root)
 			this.model.removeNodeFromParent(node);
-		PodCastURL url = RunTime.findFeedByName(node.toString());
+		JDomPodCastURL url = RunTime.findFeedByName(node.toString());
 		RunTime.CONFIG.feed_au.remove(url);
 		return;
 	}
@@ -666,7 +667,7 @@ public class MainFrame extends javax.swing.JFrame {
 	private TreeNode recoverTree() {
 
 		DefaultMutableTreeNode s1 = new DefaultMutableTreeNode("simple1 ");
-		for (PodCastURL pod : RunTime.CONFIG.feed_au) {
+		for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 			s1 = new DefaultMutableTreeNode(pod.getName());
 			audio.add(s1);
 		}
