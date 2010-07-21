@@ -416,7 +416,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel3.add(tx_proxy_user,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 90,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 80,
 						-1));
 
 		tx_proxy_ip.setText("127.0.0.1");
@@ -426,25 +426,25 @@ public class MainFrame extends javax.swing.JFrame {
 
 		tx_proxy_pswd.setText("           ");
 		jPanel3.add(tx_proxy_pswd,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, 70,
 						-1));
 
 		tx_proxy_port.setText("7070");
 		jPanel3.add(tx_proxy_port,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 40,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 70,
 						-1));
 
 		lb_msg1.setText("Proxy Port");
 		jPanel3.add(lb_msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(
 				260, 360, 60, 30));
 
-		lb_msg2.setText("Proxy username");
+		lb_msg2.setText("UserName");
 		jPanel3.add(lb_msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				40, 390, 90, 30));
+				70, 390, 60, 30));
 
-		lb_msg3.setText("Proxy password");
+		lb_msg3.setText("Password");
 		jPanel3.add(lb_msg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				230, 390, 90, 30));
+				260, 390, 50, 30));
 
 		lb_msg4.setText("Proxy IP");
 		jPanel3.add(lb_msg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(
@@ -580,14 +580,18 @@ public class MainFrame extends javax.swing.JFrame {
 		JFileChooser fDialog = new JFileChooser();
 		fDialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int result = fDialog.showOpenDialog(this);
-		String path = "tt";
+		String path = null;
 		if (result == JFileChooser.APPROVE_OPTION) {
 			path = fDialog.getSelectedFile().getAbsolutePath();
 			System.out.println(path + "mead");
 		}
 		// System.out.println(path+"mead");
 		// this.txt_main_disk.setText(path);
-		RunTime.CONFIG.disk_other.add(path);
+		if (path.equalsIgnoreCase("") || path == null) {
+
+		} else {
+			RunTime.CONFIG.disk_other.add(path);
+		}
 		this.list_disk.setModel(new javax.swing.AbstractListModel() {
 			private static final long serialVersionUID = 1L;
 			String[] strings = RunTime.CONFIG.disk_other
@@ -655,7 +659,8 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
 		if (this.list_disk.getSelectedIndex() < 0
-				|| this.list_disk.getSelectedValue() == null) {
+				|| this.list_disk.getSelectedValue() == null
+				|| RunTime.synchronizing) {
 			return;
 		}
 		RunTime.CONFIG.disk_other.remove(this.list_disk.getSelectedValue());
@@ -833,8 +838,14 @@ public class MainFrame extends javax.swing.JFrame {
 		if (node.getParent() != null && node.getParent() != this.root)
 			this.model.removeNodeFromParent(node);
 		JDomPodCastURL url = RunTime.findFeedByName(node.toString());
-		RunTime.CONFIG.feed_au.remove(url);
-		RunTime.selectedFileName = "";
+
+		int a = JOptionPane.showConfirmDialog(null, node.toString()
+				+ "  È·¶¨ É¾³ýÂð£¿", "information", JOptionPane.YES_NO_OPTION);
+		if (a == 0) {
+			RunTime.CONFIG.feed_au.remove(url);
+			RunTime.selectedFileName = "";
+		}
+
 		return;
 	}
 

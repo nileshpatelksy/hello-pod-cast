@@ -384,7 +384,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="390" width="90" height="-1"/>
+                  <AbsoluteConstraints x="140" y="390" width="80" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -404,7 +404,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="390" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="320" y="390" width="70" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -414,7 +414,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="360" width="40" height="-1"/>
+                  <AbsoluteConstraints x="320" y="360" width="70" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -433,27 +433,27 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lb_msg2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proxy username"/>
+                <Property name="text" type="java.lang.String" value="UserName"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="40" y="390" width="90" height="30"/>
+                  <AbsoluteConstraints x="70" y="390" width="60" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_msg3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Proxy password"/>
+                <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="230" y="390" width="90" height="30"/>
+                  <AbsoluteConstraints x="260" y="390" width="50" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>
