@@ -1,203 +1,129 @@
 <com.hellocode.service.Config>
-  <disk__main>D:\kankan</disk__main>
+  <disk__main>C:\PodCast</disk__main>
   <disk__other>
-    <string>C:\Documents and Settings\Administrator.MARRY-GRE_NAME\My Documents\voa</string>
+    <string>I:\VOA</string>
   </disk__other>
   <feed__au>
-    <com.hellocode.model.PodCastURL>
-      <title>VOA: 5 Minute Features</title>
-      <author>Voice of America: ENGLISH - SPECIAL ENGLISH</author>
-      <link>http://www.voanews.com/</link>
-      <summary>VOA - In the News (Saturday), Words and Their Stories (Sunday)</summary>
-      <subtitle>IN THE NEWS (SATURDAY), WORDS AND THEIR STORIES (SUNDAY)</subtitle>
-      <copyright>Copyright 2008 VOA</copyright>
-      <language>en</language>
-      <ownerName>VOA - VOA</ownerName>
-      <ownerEmail>voanews@voanews.com</ownerEmail>
-      <imageURL>http://media.voanews.com/designimages/english-specialenglish-1491.jpg</imageURL>
-      <category>News &amp; Politics</category>
-      <name>voa</name>
-      <medias>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1501229</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0718.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0718.mp3</GUID>
-          <pubData>Sun, 18 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1500445</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0717.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0717.mp3</GUID>
-          <pubData>Sat, 17 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1500445</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0711.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0711.mp3</GUID>
-          <pubData>Sun, 11 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-      </medias>
-      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1491</URL>
-      <commnet></commnet>
-      <newCount>0</newCount>
-      <hasNew>false</hasNew>
-    </com.hellocode.model.PodCastURL>
-    <com.hellocode.model.PodCastURL>
-      <title>VOA: 5 Minute Features</title>
-      <author>Voice of America: ENGLISH - SPECIAL ENGLISH</author>
-      <link>http://www.voanews.com/</link>
-      <summary>VOA - In the News (Saturday), Words and Their Stories (Sunday)</summary>
-      <subtitle>IN THE NEWS (SATURDAY), WORDS AND THEIR STORIES (SUNDAY)</subtitle>
-      <copyright>Copyright 2008 VOA</copyright>
-      <language>en</language>
-      <ownerName>VOA - VOA</ownerName>
-      <ownerEmail>voanews@voanews.com</ownerEmail>
-      <imageURL>http://media.voanews.com/designimages/english-specialenglish-1491.jpg</imageURL>
-      <category>News &amp; Politics</category>
-      <name>voa999</name>
-      <medias>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1501229</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0718.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0718.mp3</GUID>
-          <pubData>Sun, 18 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1500445</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0717.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0717.mp3</GUID>
-          <pubData>Sat, 17 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>5 Minute Features</title>
-          <author>5 Minute Features</author>
-          <subtitle>In the News (Saturday), Words and Their Stories (Sunday)</subtitle>
-          <summary>5 Minute Features</summary>
-          <ENCLOSURE__Length>1500445</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0711.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE0040ab0711.mp3</GUID>
-          <pubData>Sun, 11 Jul 2010 00:46:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>5:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-      </medias>
-      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1491</URL>
-      <commnet></commnet>
-      <newCount>0</newCount>
-      <hasNew>false</hasNew>
-    </com.hellocode.model.PodCastURL>
-    <com.hellocode.model.PodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
       <title>VOA: 15 Minute Features</title>
-      <author>Voice of America: ENGLISH - SPECIAL ENGLISH</author>
       <link>http://www.voanews.com/</link>
-      <summary>VOA - People in America (Sunday), This Is America (Monday), Science in the News (Tuesday), Explorations (Wednesday), The Making of a Nation (Thursday), American Mosaic (Friday), American Stories (Saturday)</summary>
-      <subtitle>PEOPLE IN AMERICA (SUNDAY), THIS IS AMERICA (MONDAY), SCIENCE IN THE NEWS (TUESDAY), EXPLORATIONS (WEDNESDAY), THE MAKING OF A NATION (THURSDAY), AMERICAN MOSAIC (FRIDAY), AMERICAN STORIES (SATURDAY)</subtitle>
       <copyright>Copyright 2008 VOA</copyright>
       <language>en</language>
-      <ownerName>VOA - VOA</ownerName>
-      <ownerEmail>voanews@voanews.com</ownerEmail>
-      <imageURL>http://media.voanews.com/designimages/english-specialenglish-1319.jpg</imageURL>
-      <category>News &amp; Politics</category>
-      <name>voajj</name>
-      <medias>
-        <com.hellocode.model.MediaItem>
-          <title>15 Minute Features</title>
-          <author>15 Minute Features</author>
-          <subtitle>People in America (Sunday), This Is America (Monday), Science in the News (Tuesday), Explorations (Wednesday), The Making of a Nation (Thursday), American Mosaic (Friday), American Stories (Saturday)</subtitle>
-          <summary>15 Minute Features</summary>
-          <ENCLOSURE__Length>4500086</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0718.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0718.mp3</GUID>
-          <pubData>Sun, 18 Jul 2010 23:44:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>15:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>15 Minute Features</title>
-          <author>15 Minute Features</author>
-          <subtitle>People in America (Sunday), This Is America (Monday), Science in the News (Tuesday), Explorations (Wednesday), The Making of a Nation (Thursday), American Mosaic (Friday), American Stories (Saturday)</subtitle>
-          <summary>15 Minute Features</summary>
-          <ENCLOSURE__Length>4500086</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0717.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0717.mp3</GUID>
-          <pubData>Sat, 17 Jul 2010 23:02:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>15:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-        <com.hellocode.model.MediaItem>
-          <title>15 Minute Features</title>
-          <author>15 Minute Features</author>
-          <subtitle>People in America (Sunday), This Is America (Monday), Science in the News (Tuesday), Explorations (Wednesday), The Making of a Nation (Thursday), American Mosaic (Friday), American Stories (Saturday)</subtitle>
-          <summary>15 Minute Features</summary>
-          <ENCLOSURE__Length>4500086</ENCLOSURE__Length>
-          <ENCLOSURE__URL>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0716.mp3</ENCLOSURE__URL>
-          <ENCLOSURE__TYPE>audio/mpeg</ENCLOSURE__TYPE>
-          <GUID>http://www.voanews.com/mp3/voa/english/spec/podcasts/SPECIAL_ENGLISH_FEATURE2245ab0716.mp3</GUID>
-          <pubData>Fri, 16 Jul 2010 23:02:00 GMT</pubData>
-          <keywords></keywords>
-          <explicit>no</explicit>
-          <duration>15:00</duration>
-          <download>false</download>
-        </com.hellocode.model.MediaItem>
-      </medias>
+      <name>voa15min</name>
+      <medias/>
       <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1319</URL>
       <commnet></commnet>
       <newCount>0</newCount>
       <hasNew>false</hasNew>
-    </com.hellocode.model.PodCastURL>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 5 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa5min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1491</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 4 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa4min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1320</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: Special English Radio: 30 Minutes of News and Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa30min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1318</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>6 Minute English</title>
+      <link>http://www.bbclearningenglish.com/grammar/how_to/index.shtml</link>
+      <copyright>(C) BBC 2010</copyright>
+      <language>en-gb</language>
+      <name>bbc6min</name>
+      <medias/>
+      <URL>http://downloads.bbc.co.uk/podcasts/worldservice/how2/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>Heart and Soul: faith perspectives</title>
+      <link>http://www.bbc.co.uk/worldservice/programmes/2009/03/000000_heartandsoul.shtml</link>
+      <copyright>(c) BBC 2010</copyright>
+      <language>en-gb</language>
+      <name>bbc_heart_soul</name>
+      <medias/>
+      <URL>http://downloads.bbc.co.uk/podcasts/worldservice/heartsoul/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>The Larry King Podcast (Video)</title>
+      <link>http://www.cnn.com/CNN/Programs/larry.king.live?eref=lkl</link>
+      <copyright>2010 Cable News Network LP, LLLP. A Time Warner Company. All Rights Reserved.</copyright>
+      <language>en-us</language>
+      <name>cnn_live</name>
+      <medias/>
+      <URL>http://rss.cnn.com/services/podcasting/lkl/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>CNN Student News (video)</title>
+      <link>http://www.cnn.com/EDUCATION?eref=studentnews</link>
+      <copyright>2010 Cable News Network LP, LLLP. A Time Warner Company. All Rights Reserved.</copyright>
+      <language>en-us</language>
+      <name>cnn_student</name>
+      <medias/>
+      <URL>http://rss.cnn.com/services/podcasting/studentnews/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <name>bbcAVI</name>
+      <medias/>
+      <URL>http://rss.cnn.com/services/podcasting/aliv/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 5 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1491</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
   </feed__au>
+  <proxy__host>127.0.0.1</proxy__host>
+  <proxy__port>7070</proxy__port>
+  <proxy__name>                           </proxy__name>
+  <proxy__pswd>           </proxy__pswd>
+  <proxy__enabel>false</proxy__enabel>
 </com.hellocode.service.Config>
