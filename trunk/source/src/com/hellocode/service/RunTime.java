@@ -3,7 +3,7 @@ package com.hellocode.service;
 import java.io.FileNotFoundException;
 
 import com.hellocode.main.PodCast;
-import com.hellocode.model.PodCastURL;
+import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.util.FileUtil;
 import com.hellocode.util.XML2JavaUtil;
 
@@ -38,8 +38,8 @@ public final class RunTime {
 		// feed_tv.add(url);
 	}
 
-	public static PodCastURL findFeedByName(String name) {
-		for (PodCastURL pod : RunTime.CONFIG.feed_au) {
+	public static JDomPodCastURL findFeedByName(String name) {
+		for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 			if (pod.getName().equalsIgnoreCase(name)) {
 				return pod;
 			}
@@ -67,7 +67,7 @@ public final class RunTime {
 					refreshing = true;
 					try {
 						System.out.println("runing...");
-						for (PodCastURL pod : RunTime.CONFIG.feed_au) {
+						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 							System.out.println("runing...");
 							PodCast.main.lb_info.setText(pod.getName() + "正在更新"
 									+ pod.getURL());
