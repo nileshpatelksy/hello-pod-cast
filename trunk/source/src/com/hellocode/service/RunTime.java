@@ -1,7 +1,5 @@
 package com.hellocode.service;
 
-import java.io.FileNotFoundException;
-
 import com.hellocode.main.PodCast;
 import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.util.FileUtil;
@@ -13,13 +11,17 @@ public final class RunTime {
 	private static final String CONFIG_XML = "mead.xml";
 	public static boolean synchronizing = false;
 	public static Config CONFIG = new Config();
-	private static boolean refreshing = false;
-	static {
-		init();
-	}
+	public static boolean refreshing = false;
+	
 
+	public static void resetAll(){
+		FileUtil.deleteFile(CONFIG_XML);
+	}
 	public static void destroy() {
 		try {
+			for(JDomPodCastURL pod :RunTime.CONFIG.feed_au){
+				pod.clearMedia();
+			}
 			XML2JavaUtil.java2XML(CONFIG_XML, RunTime.CONFIG);
 		} catch (Exception e) {
 			FileUtil.deleteFile(CONFIG_XML);
@@ -31,10 +33,13 @@ public final class RunTime {
 
 		try {
 			CONFIG = XML2JavaUtil.XML2Java(CONFIG_XML);
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
+			e.printStackTrace();
 			FileUtil.deleteFile(CONFIG_XML);
-			CONFIG = new Config();
+			CONFIG = new Config();			
 		}
+		
+		FileUtil.createDir(CONFIG.disk_main);
 		// feed_tv.add(url);
 	}
 

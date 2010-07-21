@@ -7,6 +7,7 @@
 package com.hellocode.ui;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -33,7 +34,6 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import com.hellocode.main.PodCast;
-import com.hellocode.model.IPodXML;
 import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.model.MediaItem;
 import com.hellocode.service.DownLoad;
@@ -52,7 +52,13 @@ public class MainFrame extends javax.swing.JFrame {
 	/** Creates new form MainFrame */
 	public MainFrame() {
 		initComponents();
-		this.init();
+		try {
+			this.init();
+		} catch (Exception e) {
+			RunTime.resetAll();
+			// TODO warning here...
+			this.init();
+		}
 	}
 
 	private DefaultTreeModel model;
@@ -61,7 +67,7 @@ public class MainFrame extends javax.swing.JFrame {
 		this.jTree1.setRootVisible(false);
 		// this.jTree1.setToolTipText("10new");
 		this.jTree1.setExpandsSelectedPaths(true);
-		TreeNode root = recoverTree();
+		TreeNode root = recoverUI();
 		model = new DefaultTreeModel(root);
 
 		this.jTree1.setModel(model);
@@ -135,6 +141,16 @@ public class MainFrame extends javax.swing.JFrame {
 	private void initComponents() {
 
 		jTabbedPane1 = new javax.swing.JTabbedPane();
+		jPanel1 = new javax.swing.JPanel();
+		jScrollPane2 = new javax.swing.JScrollPane();
+		jTree1 = new javax.swing.JTree();
+		btn_del = new javax.swing.JButton();
+		btn_add_au = new javax.swing.JButton();
+		btn_refresh_all = new javax.swing.JButton();
+		jScrollPane3 = new javax.swing.JScrollPane();
+		detail = new javax.swing.JTable();
+		lb_info = new javax.swing.JLabel();
+		btn_download = new javax.swing.JButton();
 		jPanel3 = new javax.swing.JPanel();
 		jScrollPane1 = new javax.swing.JScrollPane();
 		txt_main_disk = new javax.swing.JTextPane();
@@ -148,18 +164,17 @@ public class MainFrame extends javax.swing.JFrame {
 		jButton4 = new javax.swing.JButton();
 		ck_down_load = new javax.swing.JCheckBox();
 		jButton5 = new javax.swing.JButton();
-		ck_auto_check_disk = new javax.swing.JCheckBox();
+		ck_use_proxy = new javax.swing.JCheckBox();
 		lb_msg = new javax.swing.JLabel();
-		jPanel1 = new javax.swing.JPanel();
-		jScrollPane2 = new javax.swing.JScrollPane();
-		jTree1 = new javax.swing.JTree();
-		btn_del = new javax.swing.JButton();
-		btn_add_au = new javax.swing.JButton();
-		btn_refresh_all = new javax.swing.JButton();
-		jScrollPane3 = new javax.swing.JScrollPane();
-		detail = new javax.swing.JTable();
-		lb_info = new javax.swing.JLabel();
-		btn_download = new javax.swing.JButton();
+		tx_proxy_user = new javax.swing.JTextField();
+		tx_proxy_ip = new javax.swing.JTextField();
+		tx_proxy_pswd = new javax.swing.JTextField();
+		tx_proxy_port = new javax.swing.JTextField();
+		lb_msg1 = new javax.swing.JLabel();
+		lb_msg2 = new javax.swing.JLabel();
+		lb_msg3 = new javax.swing.JLabel();
+		lb_msg4 = new javax.swing.JLabel();
+		ck_auto_check_disk1 = new javax.swing.JCheckBox();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,8 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
 						-1));
 
 		jTabbedPane1.addTab("PodCastXML", jPanel1);
-		
-		
+
 		jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
 		jScrollPane1.setViewportView(txt_main_disk);
@@ -259,14 +273,14 @@ public class MainFrame extends javax.swing.JFrame {
 		jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(
 				0, 70, 60, 20));
 
-		jButton1.setText("Save Now!");
+		jButton1.setText("Apply Now!");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton1ActionPerformed(evt);
 			}
 		});
 		jPanel3.add(jButton1,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360,
 						110, -1));
 
 		jButton2.setText("Synchronization");
@@ -276,15 +290,12 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel3.add(jButton2,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 150,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 180,
 						-1));
 
 		list_disk.setModel(new javax.swing.AbstractListModel() {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			String[] strings = {};
+			String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4",
+					"Item 5" };
 
 			public int getSize() {
 				return strings.length;
@@ -336,15 +347,67 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230,
 						110, -1));
 
-		ck_auto_check_disk.setSelected(true);
-		ck_auto_check_disk.setText("Auto Check Plug-in Disk(not work now)");
-		jPanel3.add(ck_auto_check_disk,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1,
-						30));
+		ck_use_proxy.setSelected(true);
+		ck_use_proxy.setText("Use Proxy");
+		ck_use_proxy.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				ck_use_proxyActionPerformed(evt);
+			}
+		});
+		jPanel3.add(ck_use_proxy,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420,
+						120, 30));
 
-		lb_msg.setText("Select other portable device, copy files to them!");
+		lb_msg.setText("Select other protable device, then sync them...");
 		jPanel3.add(lb_msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				320, 30, 420, 30));
+				320, 20, 250, 30));
+
+		tx_proxy_user.setText("                           ");
+		tx_proxy_user.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				tx_proxy_userActionPerformed(evt);
+			}
+		});
+		jPanel3.add(tx_proxy_user,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 90,
+						-1));
+
+		tx_proxy_ip.setText("127.0.0.1");
+		jPanel3.add(tx_proxy_ip,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 80,
+						-1));
+
+		tx_proxy_pswd.setText("           ");
+		jPanel3.add(tx_proxy_pswd,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1,
+						-1));
+
+		tx_proxy_port.setText("7070");
+		jPanel3.add(tx_proxy_port,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 40,
+						-1));
+
+		lb_msg1.setText("Proxy Port");
+		jPanel3.add(lb_msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(
+				260, 360, 60, 30));
+
+		lb_msg2.setText("Proxy username");
+		jPanel3.add(lb_msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(
+				40, 390, 90, 30));
+
+		lb_msg3.setText("Proxy password");
+		jPanel3.add(lb_msg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(
+				230, 390, 90, 30));
+
+		lb_msg4.setText("Proxy IP");
+		jPanel3.add(lb_msg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(
+				80, 360, 60, 30));
+
+		ck_auto_check_disk1.setSelected(true);
+		ck_auto_check_disk1.setText("Auto Check Plug-in Disk(not work now)");
+		jPanel3.add(ck_auto_check_disk1,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1,
+						30));
 
 		jTabbedPane1.addTab("Sychronize", jPanel3);
 
@@ -370,6 +433,45 @@ public class MainFrame extends javax.swing.JFrame {
 	}// </editor-fold>
 
 	// GEN-END:initComponents
+
+	protected void tx_proxy_userActionPerformed(ActionEvent evt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	void ck_use_proxyActionPerformed(java.awt.event.ActionEvent evt) {
+		if (this.ck_use_proxy.isSelected()) {
+			RunTime.CONFIG.proxy_host = this.tx_proxy_ip.getText();
+			RunTime.CONFIG.proxy_port = this.tx_proxy_port.getText();
+			RunTime.CONFIG.proxy_name = this.tx_proxy_user.getText();
+			RunTime.CONFIG.proxy_pswd = this.tx_proxy_pswd.getText();
+			RunTime.CONFIG.setProxy();
+			this.testProxyUI();
+		} else {
+			this.lb_msg.setText("取消代理设置！");
+			this.ck_use_proxy.setText("没有使用代理");
+			RunTime.CONFIG.removeProxy();
+			this.testProxyUI();
+		}
+		
+	}
+
+	void testProxyUI() {
+
+		if (RunTime.CONFIG.proxy_enabel && RunTime.CONFIG.testProxy()) {
+			this.lb_msg.setText("代理设置成功！");
+			this.ck_use_proxy.setText("正在使用代理");
+		} else {
+			this.lb_msg.setText("代理设置失败！");
+			RunTime.CONFIG.removeProxy();
+			this.ck_use_proxy.setSelected(false);
+			this.ck_use_proxy.setText("没有使用代理");
+		}
+	}
+
+	private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
+		// TODO add your handling code here:
+	}
 
 	private void detailMousePressed(MouseEvent evt) {
 		// TODO Auto-generated method stub
@@ -516,6 +618,9 @@ public class MainFrame extends javax.swing.JFrame {
 
 	// refresh tabel
 	private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {
+		if (RunTime.refreshing) {
+			this.lb_info.setText("正在刷新feed，不要急哦");
+		}
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode) this.jTree1
 				.getLastSelectedPathComponent();
 		if (node == null || node == this.audio) {
@@ -664,7 +769,7 @@ public class MainFrame extends javax.swing.JFrame {
 	private DefaultMutableTreeNode audio = new DefaultMutableTreeNode("Audio ");
 	private DefaultMutableTreeNode tv = new DefaultMutableTreeNode("TV ");
 
-	private TreeNode recoverTree() {
+	private TreeNode recoverUI() {
 
 		DefaultMutableTreeNode s1 = new DefaultMutableTreeNode("simple1 ");
 		for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
@@ -675,7 +780,18 @@ public class MainFrame extends javax.swing.JFrame {
 		tv.add(s1);
 		root.add(audio);
 		// root.add(tv);
-
+		if (RunTime.CONFIG.proxy_enabel) {
+			this.ck_use_proxy.setSelected(true);
+			this.tx_proxy_ip.setText(RunTime.CONFIG.proxy_host);
+			this.tx_proxy_port.setText(RunTime.CONFIG.proxy_port);
+			this.tx_proxy_user.setText(RunTime.CONFIG.proxy_name);
+			this.tx_proxy_pswd.setText(RunTime.CONFIG.proxy_pswd);
+			RunTime.CONFIG.setProxy();
+			this.testProxyUI();
+		}else{
+			this.ck_use_proxy.setSelected(false);
+			this.ck_use_proxy.setText("未使用代理");
+		}
 		return root;
 	}
 
@@ -689,8 +805,9 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JButton btn_del;
 	private javax.swing.JButton btn_download;
 	private javax.swing.JButton btn_refresh_all;
-	private javax.swing.JCheckBox ck_auto_check_disk;
+	private javax.swing.JCheckBox ck_auto_check_disk1;
 	private javax.swing.JCheckBox ck_down_load;
+	private javax.swing.JCheckBox ck_use_proxy;
 	private javax.swing.JTable detail;
 	private javax.swing.JButton jButton1;
 	private javax.swing.JButton jButton2;
@@ -709,7 +826,15 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JTree jTree1;
 	public javax.swing.JLabel lb_info;
 	public javax.swing.JLabel lb_msg;
+	public javax.swing.JLabel lb_msg1;
+	public javax.swing.JLabel lb_msg2;
+	public javax.swing.JLabel lb_msg3;
+	public javax.swing.JLabel lb_msg4;
 	private javax.swing.JList list_disk;
+	private javax.swing.JTextField tx_proxy_ip;
+	private javax.swing.JTextField tx_proxy_port;
+	private javax.swing.JTextField tx_proxy_pswd;
+	private javax.swing.JTextField tx_proxy_user;
 	private javax.swing.JTextPane txt_main_disk;
 	// End of variables declaration//GEN-END:variables
 
