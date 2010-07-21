@@ -115,12 +115,13 @@ public class JDomPodCastURL extends XMLPodCastURL {
 				media.setKeywords(item.getChildText("itunes:keywords"));
 				media.setExplicit(item.getChildText("itunes:explicit"));
 				media.setDuration(item.getChildText("itunes:duration"));
-				System.out.println("UUUUUUUUU");
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$itunes:duration =="+item.getChildText("itunes:duration"));
 				Element enclosure = item.getChild("enclosure");
 				media
 						.setENCLOSURE_Length(enclosure
 								.getAttributeValue("length"));
 				media.setENCLOSURE_URL(enclosure.getAttributeValue("url"));
+				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$URL =="+enclosure.getAttributeValue("url"));
 				media.setENCLOSURE_TYPE(enclosure.getAttributeValue("type"));
 				// add media
 				this.medias.add(media);
@@ -156,7 +157,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 	}
 
 	public static void main(String[] args) {
-		String voa = "http://www.eslpod.com/past.xml";
+		String voa = "http://downloads.bbc.co.uk/podcasts/worldservice/how2/rss.xml";
 		JDomPodCastURL url = new JDomPodCastURL(voa);
 		url.reFreshURL();
 		url.print();
