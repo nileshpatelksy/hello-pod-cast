@@ -10,6 +10,7 @@ import com.hellocode.util.NetWorkingUtil;
 public class DownLoad {
 	public volatile static Integer job_count = 0;
 	private String folder_name;
+	public ArrayList<Thread> threads = new ArrayList<Thread>();
 
 	// not contain file name.
 	private void getFile(String url) {

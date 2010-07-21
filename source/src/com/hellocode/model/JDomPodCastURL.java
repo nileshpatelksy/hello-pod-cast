@@ -64,16 +64,22 @@ public class JDomPodCastURL extends XMLPodCastURL {
 		this.URL = url;
 	}
 
+	public void clearMedia(){
+		this.medias.clear();
+	}
 	/**
 	 * urlconnection, get MediaItems
 	 * 
 	 * @return
 	 */
 	public int reFreshURL() {
+		this.clearMedia();
+		
 		if (this.URL == null) {
 			System.out.println("over");
 			return -1;
 		}
+		
 		try {
 			URL url = new URL(this.URL);
 			SAXBuilder builder = new SAXBuilder();
@@ -96,7 +102,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 			List items = channel.getChildren("item");
 			Iterator i = items.iterator();
 			MediaItem media = new MediaItem();
-			this.medias.clear();
+			
 			while (i.hasNext()) {
 				media = new MediaItem();
 				Element item = (Element) i.next();
@@ -109,7 +115,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 				media.setKeywords(item.getChildText("itunes:keywords"));
 				media.setExplicit(item.getChildText("itunes:explicit"));
 				media.setDuration(item.getChildText("itunes:duration"));
-				// System.out.println("UUUUUUUUU");
+				System.out.println("UUUUUUUUU");
 				Element enclosure = item.getChild("enclosure");
 				media
 						.setENCLOSURE_Length(enclosure
@@ -119,7 +125,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 				// add media
 				this.medias.add(media);
 				String ititle = item.getChildText("title");
-				System.out.println(ititle + "########################");
+				//System.out.println(ititle + "########################");
 			}
 			this.print();
 		} catch (Exception e) {

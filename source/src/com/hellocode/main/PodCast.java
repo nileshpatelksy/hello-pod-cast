@@ -19,6 +19,8 @@ public final class PodCast {
 	 */
 	public static void main(String[] args) {
 
+		RunTime.init();
+
 		main = new MainFrame();
 		main.setVisible(true);
 

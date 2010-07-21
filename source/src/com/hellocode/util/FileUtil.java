@@ -15,6 +15,7 @@ public class FileUtil {
 		// 如果存在文件夹dir，
 		File dFile = new File(full_path);
 		if (!dFile.exists()) {
+			System.out.println("创建空盘" + full_path);
 			dFile.mkdir();
 		}
 		if (dFile.exists() && dFile.isFile()) {
