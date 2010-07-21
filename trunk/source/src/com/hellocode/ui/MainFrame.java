@@ -692,6 +692,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 	// refresh tabel
 	private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {
+		this.ck_select_all.setSelected(false);
 		if (RunTime.refreshing) {
 			this.lb_info.setText("正在刷新feed，不要急哦");
 		}
@@ -835,13 +836,14 @@ public class MainFrame extends javax.swing.JFrame {
 			this.lb_info.setText("未选择tree上的节点node");
 			return;
 		}
-		if (node.getParent() != null && node.getParent() != this.root)
-			this.model.removeNodeFromParent(node);
-		JDomPodCastURL url = RunTime.findFeedByName(node.toString());
 
 		int a = JOptionPane.showConfirmDialog(null, node.toString()
 				+ "  确定 删除吗？", "information", JOptionPane.YES_NO_OPTION);
 		if (a == 0) {
+			if (node.getParent() != null && node.getParent() != this.root)
+				this.model.removeNodeFromParent(node);
+			
+			JDomPodCastURL url = RunTime.findFeedByName(node.toString());
 			RunTime.CONFIG.feed_au.remove(url);
 			RunTime.selectedFileName = "";
 		}
