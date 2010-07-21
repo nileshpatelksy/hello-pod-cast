@@ -19,6 +19,7 @@ public final class RunTime {
 	}
 	public static void destroy() {
 		try {
+			//clear all the items, do not save to XML configuration file
 			for(JDomPodCastURL pod :RunTime.CONFIG.feed_au){
 				pod.clearMedia();
 			}
@@ -59,7 +60,7 @@ public final class RunTime {
 			PodCast.main.lb_info.setText("您没有订阅任何feed,请点击Add Feed. 谢谢使用");
 		}
 		if (refreshing) {
-			PodCast.main.lb_info.setText("线程冲突，请重新刷新Refresh");
+			PodCast.main.lb_info.setText("线程冲突，等待上一个线程刷新");
 			return;
 		}
 		
@@ -74,11 +75,13 @@ public final class RunTime {
 						System.out.println("runing...");
 						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 							System.out.println("runing...");
+							//PodCast.main.lb_note.setText("正在更新"+pod.getName());
 							PodCast.main.lb_info.setText(pod.getName() + "正在更新"
 									+ pod.getURL());
 
 							pod.reFreshURL();
 						}
+						//PodCast.main.lb_note.setText("feeds完成更新!");
 						PodCast.main.lb_info.setText("完成更新!");
 						System.out.println("runing...");
 					} catch (Exception e) {
