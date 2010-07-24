@@ -30,7 +30,7 @@ public class FileUtil {
 	/**
 	 * »º´æµÄ´óÐ¡
 	 */
-	private static int BUFFER_SIZE = 800 * 1024;
+	private static int BUFFER_SIZE = 1024;
 
 	public static boolean copy(File src, File dst) {
 		System.out.println("copy:src=" + src.getAbsolutePath());
