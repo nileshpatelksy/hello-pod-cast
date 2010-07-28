@@ -1,0 +1,158 @@
+import   java.awt.*;     
+  import   java.awt.event.*;     
+  import   java.io.*;     
+    
+  class   javaEdit   extends   Frame   implements   ActionListener,Runnable{     
+    
+  String   file=null;     
+  String   js=null;     
+  Thread   c_run,r_run;     
+  MenuBar   menubar=new   MenuBar();     
+  Menu   menu_file=new   Menu("文件");     
+  Menu   menu_run=new   Menu("生成");     
+  MenuItem   item_new,item_open,item_save,item_exit,item_compiler,item_run;     
+  Label   label_1=new   Label("源文件");     
+  Label   label_2=new   Label("输出");     
+  TextArea   text_t,text_r;     
+  Panel   p1,p2;     
+  FileDialog   open=new   FileDialog(this,"打开",FileDialog.LOAD);     
+  FileDialog   save=new   FileDialog(this,"保存",FileDialog.SAVE);     
+  boolean   mc=true;     
+  javaEdit(){     
+  super("java文本编译器");     
+    
+  text_t=new   TextArea("欢迎使用java编译器",30,10,TextArea.SCROLLBARS_BOTH);     
+  text_r=new   TextArea(5,10);     
+  p1=new   Panel();     
+  p2=new   Panel();     
+  p1.setLayout(new   GridLayout(2,1));     
+  p2.setLayout(new   GridLayout(2,1));     
+  p1.add(label_1);   p1.add(text_t);     
+  p2.add(label_2);   p2.add(text_r);     
+  item_new=new   MenuItem("新建");     
+  item_open=new   MenuItem("打开");     
+  item_save=new   MenuItem("保存");     
+  item_exit=new   MenuItem("退出");     
+  item_compiler=new   MenuItem("编译");     
+  item_run=new   MenuItem("运行");     
+  menu_file.add(item_new);     
+  menu_file.add(item_open);     
+  menu_file.add(item_save);     
+  menu_file.add(item_exit);     
+  menu_run.add(item_compiler);     
+  menu_run.add(item_run);     
+  menubar.add(menu_file);     
+  menubar.add(menu_run);     
+  item_new.addActionListener(this);     
+  item_open.addActionListener(this);     
+  item_save.addActionListener(this);     
+  item_exit.addActionListener(this);     
+  item_compiler.addActionListener(this);     
+  item_run.addActionListener(this);     
+  open.addWindowListener(new   WindowAdapter(){     
+  public   void   windowClosing(WindowEvent   e){     
+  open.setVisible(false);}});     
+  save.addWindowListener(new   WindowAdapter(){     
+  public   void   windowClosing(WindowEvent   e){     
+  save.setVisible(false);}});     
+  setMenuBar(menubar);     
+  setSize(800,600);     
+  setVisible(true);     
+  setLayout(new   GridLayout(2,1));     
+  add(p1);   add(p2);     
+  addWindowListener(new   WindowAdapter(){     
+  public   void   windowClosing(WindowEvent   e){     
+  System.exit(0);}});     
+  }     
+  public   void   actionPerformed(ActionEvent   e){     
+    
+  if(e.getSource()==item_new){     
+  text_t.setText("");     
+  text_r.setText("");     
+    
+  }     
+  if(e.getSource()==item_open){     
+  String   s;     
+  open.setVisible(true);     
+  file=open.getDirectory()+open.getFile();     
+  text_t.setText("");     
+  setTitle(file);     
+  try{     
+  FileReader   in_file=new   FileReader(file);     
+  BufferedReader   in=new   BufferedReader(in_file);     
+  while((s=in.readLine())!=null)     
+  text_t.append(s+&acute;\n&acute;);     
+  in.close();     
+  }     
+  catch(IOException   er){}     
+  }     
+  if(e.getSource()==item_save){     
+  save.setVisible(true);     
+  file=save.getDirectory()+save.getFile();     
+  try{     
+  FileWriter   out_file=new   FileWriter(file);     
+  BufferedWriter   out=new   BufferedWriter(out_file);     
+  out.write(text_t.getText(),0,(text_t.getText()).length());     
+  out.close();     
+  }     
+  catch(IOException   er){}     
+  }     
+  if(e.getSource()==item_exit){     
+  System.exit(0);     
+  }     
+  if(e.getSource()==item_compiler){     
+  c_run=new   Thread(this);     
+  c_run.start();     
+  }     
+  if(e.getSource()==item_run){     
+  r_run=new   Thread(this);     
+  r_run.start();     
+  }     
+  }     
+  public   void   run(){     
+  if(Thread.currentThread()==c_run){     
+  text_r.setText("");     
+  byte   er[]=new   byte[100];     
+  int   n;     
+  try{     
+    
+  Runtime   ce=Runtime.getRuntime();     
+  InputStream   in=ce.exec("javac   "+file).getErrorStream();     
+  BufferedInputStream   bin=new   BufferedInputStream(in);     
+  while((n=bin.read(er,0,100))!=-1){     
+    
+  String   sr=null;     
+  sr=new   String(er,0,n);     
+  text_r.append(sr);     
+  if(sr!=null){mc=false;}     
+  }     
+  if(mc)   text_r.setText("编译完成无错误");     
+  }     
+  catch(IOException   ex){}     
+    
+    
+  }     
+  if(Thread.currentThread()==r_run){     
+  byte   rr[]=new   byte[100];     
+  String   s=null;     
+  int   n;     
+  js=file.substring(0,(file.length()-5));     
+  text_r.setText(js);     
+  try{     
+  Runtime   ce=Runtime.getRuntime();     
+  InputStream   in=ce.exec("java   "+js).getInputStream();     
+  BufferedInputStream   bin=new   BufferedInputStream(in);     
+  while((n=bin.read(rr,0,100))!=-1){     
+  s=new   String(rr,0,n);     
+  text_r.append(s);     
+  }     
+  }     
+  catch(IOException   e){}     
+  }     
+  }     
+    
+  public   static   void   main(String   agrs[]){     
+  javaEdit   go=new   javaEdit();     
+  }     
+    
+  }     

@@ -1,0 +1,807 @@
+
+---------------------------------------------------------
+保存时间：   2010-05-07 22:27:24
+---------------------------------------------------------
+文件名：       F:\scjd\编译原理\tools-2.1\src\TAM\Disassembler.java
+总行数：       407
+代码行数：     289 (71.01%)
+注释行数：     79 (19.41%)
+空白行数：     39 (9.58%)
+代码注释率：   21.47%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\TAM\Instruction.java
+总行数：       64
+代码行数：     35 (51.47%)
+注释行数：     25 (36.76%)
+空白行数：     8 (11.76%)
+代码注释率：   41.67%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\TAM\Interpreter.java
+总行数：       624
+代码行数：     533 (84.07%)
+注释行数：     52 (8.20%)
+空白行数：     49 (7.73%)
+代码注释率：   8.89%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\TAM\Machine.java
+总行数：       80
+代码行数：     30 (36.59%)
+注释行数：     32 (39.02%)
+空白行数：     20 (24.39%)
+代码注释率：   51.61%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\Compiler.java
+总行数：       128
+代码行数：     64 (48.85%)
+注释行数：     51 (38.93%)
+空白行数：     16 (12.21%)
+代码注释率：   44.35%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\ErrorReporter.java
+总行数：       42
+代码行数：     21 (50.00%)
+注释行数：     13 (30.95%)
+空白行数：     8 (19.05%)
+代码注释率：   38.24%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\StdEnvironment.java
+总行数：       49
+代码行数：     21 (42.86%)
+注释行数：     15 (30.61%)
+空白行数：     13 (26.53%)
+代码注释率：   41.67%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\Drawer.java
+总行数：       61
+代码行数：     33 (54.10%)
+注释行数：     14 (22.95%)
+空白行数：     14 (22.95%)
+代码注释率：   29.79%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\DrawerFrame.java
+总行数：       48
+代码行数：     28 (58.33%)
+注释行数：     15 (31.25%)
+空白行数：     5 (10.42%)
+代码注释率：   34.88%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\DrawerPanel.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\DrawingTree.java
+总行数：       87
+代码行数：     59 (67.82%)
+注释行数：     13 (14.94%)
+空白行数：     15 (17.24%)
+代码注释率：   18.06%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\LayoutVisitor.java
+总行数：       548
+代码行数：     428 (78.10%)
+注释行数：     24 (4.38%)
+空白行数：     96 (17.52%)
+代码注释率：   5.31%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\Polygon.java
+总行数：       20
+代码行数：     5 (25.00%)
+注释行数：     13 (65.00%)
+空白行数：     2 (10.00%)
+代码注释率：   72.22%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\TreeDrawer\Polyline.java
+总行数：       26
+代码行数：     10 (38.46%)
+注释行数：     13 (50.00%)
+空白行数：     3 (11.54%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\Parser.java
+总行数：       941
+代码行数：     720 (75.24%)
+注释行数：     91 (9.51%)
+空白行数：     146 (15.26%)
+代码注释率：   11.22%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\Scanner.java
+总行数：       270
+代码行数：     211 (77.86%)
+注释行数：     19 (7.01%)
+空白行数：     41 (15.13%)
+代码注释率：   8.26%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\SourceFile.java
+总行数：       56
+代码行数：     35 (62.50%)
+注释行数：     13 (23.21%)
+空白行数：     8 (14.29%)
+代码注释率：   27.08%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\SourcePosition.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\SyntaxError.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\SyntacticAnalyzer\Token.java
+总行数：       98
+代码行数：     59 (60.20%)
+注释行数：     19 (19.39%)
+空白行数：     20 (20.41%)
+代码注释率：   24.36%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\ContextualAnalyzer\Checker.java
+总行数：       1013
+代码行数：     794 (78.23%)
+注释行数：     88 (8.67%)
+空白行数：     133 (13.10%)
+代码注释率：   9.98%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\ContextualAnalyzer\IdentificationTable.java
+总行数：       108
+代码行数：     56 (51.85%)
+注释行数：     29 (26.85%)
+空白行数：     23 (21.30%)
+代码注释率：   34.12%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\ContextualAnalyzer\IdEntry.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\Encoder.java
+总行数：       1020
+代码行数：     831 (81.07%)
+注释行数：     81 (7.90%)
+空白行数：     113 (11.02%)
+代码注释率：   8.88%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\EqualityRoutine.java
+总行数：       30
+代码行数：     11 (36.67%)
+注释行数：     13 (43.33%)
+空白行数：     6 (20.00%)
+代码注释率：   54.17%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\Field.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\Frame.java
+总行数：       46
+代码行数：     25 (54.35%)
+注释行数：     13 (28.26%)
+空白行数：     8 (17.39%)
+代码注释率：   34.21%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\KnownAddress.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\KnownRoutine.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\KnownValue.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\ObjectAddress.java
+总行数：       26
+代码行数：     8 (30.77%)
+注释行数：     13 (50.00%)
+空白行数：     5 (19.23%)
+代码注释率：   61.90%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\PrimitiveRoutine.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\RuntimeEntity.java
+总行数：       33
+代码行数：     11 (33.33%)
+注释行数：     14 (42.42%)
+空白行数：     8 (24.24%)
+代码注释率：   56.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\TypeRepresentation.java
+总行数：       23
+代码行数：     6 (26.09%)
+注释行数：     13 (56.52%)
+空白行数：     4 (17.39%)
+代码注释率：   68.42%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\UnknownAddress.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\UnknownRoutine.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\CodeGenerator\UnknownValue.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ActualParameter.java
+总行数：       24
+代码行数：     7 (29.17%)
+注释行数：     13 (54.17%)
+空白行数：     4 (16.67%)
+代码注释率：   65.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ActualParameterSequence.java
+总行数：       24
+代码行数：     7 (29.17%)
+注释行数：     13 (54.17%)
+空白行数：     4 (16.67%)
+代码注释率：   65.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\AnyTypeDenoter.java
+总行数：       32
+代码行数：     13 (40.63%)
+注释行数：     13 (40.63%)
+空白行数：     6 (18.75%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ArrayAggregate.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ArrayExpression.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ArrayTypeDenoter.java
+总行数：       45
+代码行数：     25 (55.56%)
+注释行数：     13 (28.89%)
+空白行数：     7 (15.56%)
+代码注释率：   34.21%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\AssignCommand.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\AST.java
+总行数：       35
+代码行数：     15 (42.86%)
+注释行数：     13 (37.14%)
+空白行数：     7 (20.00%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\BinaryExpression.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\BinaryOperatorDeclaration.java
+总行数：       37
+代码行数：     18 (48.65%)
+注释行数：     13 (35.14%)
+空白行数：     6 (16.22%)
+代码注释率：   41.94%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\BoolTypeDenoter.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\CallCommand.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\CallExpression.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\CharacterExpression.java
+总行数：       32
+代码行数：     13 (40.63%)
+注释行数：     13 (40.63%)
+空白行数：     6 (18.75%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\CharacterLiteral.java
+总行数：       29
+代码行数：     10 (34.48%)
+注释行数：     13 (44.83%)
+空白行数：     6 (20.69%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Vname.java
+总行数：       30
+代码行数：     12 (40.00%)
+注释行数：     13 (43.33%)
+空白行数：     5 (16.67%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\CharTypeDenoter.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Command.java
+总行数：       24
+代码行数：     7 (29.17%)
+注释行数：     13 (54.17%)
+空白行数：     4 (16.67%)
+代码注释率：   65.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ConstActualParameter.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ConstDeclaration.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ConstFormalParameter.java
+总行数：       42
+代码行数：     22 (52.38%)
+注释行数：     13 (30.95%)
+空白行数：     7 (16.67%)
+代码注释率：   37.14%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Declaration.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\DotVname.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\EmptyActualParameterSequence.java
+总行数：       28
+代码行数：     10 (35.71%)
+注释行数：     13 (46.43%)
+空白行数：     5 (17.86%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\EmptyCommand.java
+总行数：       28
+代码行数：     10 (35.71%)
+注释行数：     13 (46.43%)
+空白行数：     5 (17.86%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\EmptyExpression.java
+总行数：       28
+代码行数：     10 (35.71%)
+注释行数：     13 (46.43%)
+空白行数：     5 (17.86%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\EmptyFormalParameterSequence.java
+总行数：       32
+代码行数：     13 (40.63%)
+注释行数：     13 (40.63%)
+空白行数：     6 (18.75%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ErrorTypeDenoter.java
+总行数：       32
+代码行数：     13 (40.63%)
+注释行数：     13 (40.63%)
+空白行数：     6 (18.75%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Expression.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FieldTypeDenoter.java
+总行数：       26
+代码行数：     8 (30.77%)
+注释行数：     13 (50.00%)
+空白行数：     5 (19.23%)
+代码注释率：   61.90%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FormalParameter.java
+总行数：       27
+代码行数：     8 (29.63%)
+注释行数：     13 (48.15%)
+空白行数：     6 (22.22%)
+代码注释率：   61.90%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FuncDeclaration.java
+总行数：       38
+代码行数：     19 (50.00%)
+注释行数：     13 (34.21%)
+空白行数：     6 (15.79%)
+代码注释率：   40.63%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FormalParameterSequence.java
+总行数：       26
+代码行数：     8 (30.77%)
+注释行数：     13 (50.00%)
+空白行数：     5 (19.23%)
+代码注释率：   61.90%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FuncActualParameter.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\FuncFormalParameter.java
+总行数：       44
+代码行数：     24 (54.55%)
+注释行数：     13 (29.55%)
+空白行数：     7 (15.91%)
+代码注释率：   35.14%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Identifier.java
+总行数：       33
+代码行数：     14 (41.18%)
+注释行数：     14 (41.18%)
+空白行数：     6 (17.65%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\IfCommand.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\IfExpression.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\IntegerExpression.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\IntegerLiteral.java
+总行数：       29
+代码行数：     10 (34.48%)
+注释行数：     13 (44.83%)
+空白行数：     6 (20.69%)
+代码注释率：   56.52%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\IntTypeDenoter.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\LetCommand.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\LetExpression.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\MultipleActualParameterSequence.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\MultipleArrayAggregate.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\MultipleFieldTypeDenoter.java
+总行数：       45
+代码行数：     25 (55.56%)
+注释行数：     13 (28.89%)
+空白行数：     7 (15.56%)
+代码注释率：   34.21%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\MultipleFormalParameterSequence.java
+总行数：       42
+代码行数：     22 (52.38%)
+注释行数：     13 (30.95%)
+空白行数：     7 (16.67%)
+代码注释率：   37.14%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\MultipleRecordAggregate.java
+总行数：       36
+代码行数：     17 (47.22%)
+注释行数：     13 (36.11%)
+空白行数：     6 (16.67%)
+代码注释率：   43.33%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Operator.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ProcActualParameter.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ProcDeclaration.java
+总行数：       36
+代码行数：     17 (47.22%)
+注释行数：     13 (36.11%)
+空白行数：     6 (16.67%)
+代码注释率：   43.33%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\ProcFormalParameter.java
+总行数：       42
+代码行数：     22 (52.38%)
+注释行数：     13 (30.95%)
+空白行数：     7 (16.67%)
+代码注释率：   37.14%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Program.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\RecordAggregate.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\RecordExpression.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\RecordTypeDenoter.java
+总行数：       40
+代码行数：     20 (50.00%)
+注释行数：     13 (32.50%)
+空白行数：     7 (17.50%)
+代码注释率：   39.39%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SequentialCommand.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SequentialDeclaration.java
+总行数：       33
+代码行数：     14 (42.42%)
+注释行数：     13 (39.39%)
+空白行数：     6 (18.18%)
+代码注释率：   48.15%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SimpleTypeDenoter.java
+总行数：       35
+代码行数：     15 (41.67%)
+注释行数：     14 (38.89%)
+空白行数：     7 (19.44%)
+代码注释率：   48.28%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SimpleVname.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SingleActualParameterSequence.java
+总行数：       32
+代码行数：     13 (40.63%)
+注释行数：     13 (40.63%)
+空白行数：     6 (18.75%)
+代码注释率：   50.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SingleArrayAggregate.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SingleFieldTypeDenoter.java
+总行数：       43
+代码行数：     23 (53.49%)
+注释行数：     13 (30.23%)
+空白行数：     7 (16.28%)
+代码注释率：   36.11%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SingleFormalParameterSequence.java
+总行数：       40
+代码行数：     20 (50.00%)
+注释行数：     13 (32.50%)
+空白行数：     7 (17.50%)
+代码注释率：   39.39%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SingleRecordAggregate.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\SubscriptVname.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Terminal.java
+总行数：       27
+代码行数：     9 (33.33%)
+注释行数：     13 (48.15%)
+空白行数：     5 (18.52%)
+代码注释率：   59.09%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\TypeDeclaration.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\TypeDenoter.java
+总行数：       27
+代码行数：     8 (29.63%)
+注释行数：     13 (48.15%)
+空白行数：     6 (22.22%)
+代码注释率：   61.90%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\UnaryExpression.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\UnaryOperatorDeclaration.java
+总行数：       35
+代码行数：     16 (45.71%)
+注释行数：     13 (37.14%)
+空白行数：     6 (17.14%)
+代码注释率：   44.83%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\VarActualParameter.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\VarDeclaration.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\VarFormalParameter.java
+总行数：       42
+代码行数：     22 (52.38%)
+注释行数：     13 (30.95%)
+空白行数：     7 (16.67%)
+代码注释率：   37.14%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\Visitor.java
+总行数：       182
+代码行数：     93 (51.10%)
+注释行数：     24 (13.19%)
+空白行数：     65 (35.71%)
+代码注释率：   20.51%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\VnameExpression.java
+总行数：       31
+代码行数：     12 (38.71%)
+注释行数：     13 (41.94%)
+空白行数：     6 (19.35%)
+代码注释率：   52.00%
+
+文件名：       F:\scjd\编译原理\tools-2.1\src\Triangle\AbstractSyntaxTrees\WhileCommand.java
+总行数：       34
+代码行数：     15 (44.12%)
+注释行数：     13 (38.24%)
+空白行数：     6 (17.65%)
+代码注释率：   46.43%
+
+程序行总数：   8915 (共114个文件)
+代码行总数：   5635 (62.89%)
+注释行总数：   1935 (21.60%)
+空白行总数：   1390 (15.51%)
+代码注释率：   25.56%  ( 代码注释率 = 注释行/(注释行+有效代码行) )
