@@ -1,0 +1,8 @@
+
+com.sun.tools.javac
+com.sun.tools.javac.v8
+com.sun.tools.javac.v8.code
+com.sun.tools.javac.v8.comp
+com.sun.tools.javac.v8.parser
+com.sun.tools.javac.v8.tree
+com.sun.tools.javac.v8.util
