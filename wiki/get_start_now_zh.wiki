@@ -1,0 +1,16 @@
+#labels Featured,Phase-Support
+# 使用说明
+
+= 简介 =
+
+本软件用于订阅在线广播PodCast，下载节目和同步移动设备。
+
+
+= 详细使用手册 =
+
+
+  * 下载安装：下载sun虚拟机，直接下载首页的[http://hello-pod-cast.googlecode.com/files/Hello%20Pod_V_0.2.3_exe.jar 文件]，在桌面建立快捷方式。
+  * 打开软件，Add Feed添加podcast广播源，ESL和VOA里面挑选几个，每个feed自定义名称。
+  * 更新Feed，点击Fresh All，等待feeds的下载和解析。
+  * 下载媒体，先选取一个media对选框，有个Select All,全选。等待下载完成。
+  * 插入移动设备，在Other disk里面添加移动设备的文件夹，点击同步Synchronize，等待同步完毕。
