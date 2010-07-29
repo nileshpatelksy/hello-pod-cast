@@ -9,7 +9,7 @@
 = 详细使用手册 =
 
 
-  * 下载安装：下载sun虚拟机，直接下载首页的[http://hello-pod-cast.googlecode.com/files/Hello%20Pod_V_0.2.3_exe.jar 文件]，在桌面建立快捷方式。
+  * 下载安装：下载sun虚拟机，直接转到下载页的[http://code.google.com/p/hello-pod-cast/downloads/list 文件列表]，在桌面建立快捷方式。
   * 打开软件，Add Feed添加podcast广播源，ESL和VOA里面挑选几个，每个feed自定义名称。
   * 更新Feed，点击Fresh All，等待feeds的下载和解析。
   * 下载媒体，先选取一个media对选框，有个Select All,全选。等待下载完成。
