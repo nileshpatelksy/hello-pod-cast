@@ -40,6 +40,7 @@ import com.hellocode.model.MediaItem;
 import com.hellocode.service.DownLoad;
 import com.hellocode.service.FileSyn;
 import com.hellocode.service.RunTime;
+import com.hellocode.util.Util;
 import com.hellocode.util.XML2JavaUtil;
 
 /**
@@ -233,7 +234,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_del, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				610, 30, 100, -1));
+				670, 30, 100, -1));
 
 		btn_add_au.setText("Add Feed");
 		btn_add_au.addActionListener(new java.awt.event.ActionListener() {
@@ -242,7 +243,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_add_au,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 90,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 90,
 						-1));
 
 		btn_refresh_all.setText("Refresh All");
@@ -252,7 +253,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_refresh_all,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 100,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 100,
 						-1));
 
 		detail.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
@@ -274,7 +275,7 @@ public class MainFrame extends javax.swing.JFrame {
 		lb_info
 				.setText("Welcome! Add your feed, refresh, select & download media....   Enjoy it!");
 		jPanel1.add(lb_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				160, 60, 460, 30));
+				260, 60, 530, 30));
 
 		btn_download.setText("DownLoad");
 		btn_download.addActionListener(new java.awt.event.ActionListener() {
@@ -283,7 +284,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_download,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 100,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 100,
 						-1));
 
 		ck_select_all.setText("Select All");
@@ -293,13 +294,13 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(ck_select_all,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, -1,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1,
 						-1));
 
 		lb_down_load
 				.setText("                                                                                                              ");
 		jPanel1.add(lb_down_load,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 4, 200,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 4, 510,
 						20));
 
 		jTabbedPane1.addTab("PodCastXML", jPanel1);
@@ -489,13 +490,13 @@ public class MainFrame extends javax.swing.JFrame {
 		if (this.ck_select_all.isSelected()) {
 			for (int i = 0; i < this.detail.getRowCount(); i++) {
 				JCheckBox bool = (JCheckBox) this.detail.getModel().getValueAt(
-						i, 6);
+						i, 0);
 				bool.setSelected(true);
 			}
 		} else {
 			for (int i = 0; i < this.detail.getRowCount(); i++) {
 				JCheckBox bool = (JCheckBox) this.detail.getModel().getValueAt(
-						i, 6);
+						i, 0);
 				bool.setSelected(false);
 			}
 		}
@@ -548,15 +549,16 @@ public class MainFrame extends javax.swing.JFrame {
 
 	// download file
 	private void btn_downloadActionPerformed(java.awt.event.ActionEvent evt) {
-
+		//ThreadLocal<ArrayList<String>> files = new ThreadLocal<ArrayList<String>>();
 		ArrayList<String> files = new ArrayList<String>();
 		try {
 			String tmp = "TMP";
 			for (int i = 0; i < this.detail.getRowCount(); i++) {
 				JCheckBox bool = (JCheckBox) this.detail.getModel().getValueAt(
-						i, 6);
+						i, 0);
 				if (bool.isSelected()) {
-					tmp += this.detail.getModel().getValueAt(i, 0).toString();
+
+					tmp += this.detail.getModel().getValueAt(i, 1).toString();
 					System.out.println(bool.getText() + " ==bool:"
 							+ bool.isSelected());
 					files.add(bool.getText());
@@ -714,15 +716,15 @@ public class MainFrame extends javax.swing.JFrame {
 
 		DefaultTableModel model = new javax.swing.table.DefaultTableModel();
 		model.setColumnCount(7);
-		model.setColumnIdentifiers(new String[] { "title", "author", "pubTime",
-				"time duration", "length", "TYPE", "Select" });
+		model.setColumnIdentifiers(new String[] { "Select", "Title", "Author",
+				"PubTime", "Duration", "Size", "TYPE" });
 		for (MediaItem m : pod.getMedias()) {
-			model
-					.addRow(new Object[] { m.getTitle(), m.getAuthor(),
-							m.getPubData(), m.getDuration(),
-							m.getENCLOSURE_Length(), m.getENCLOSURE_TYPE(),
-							new JCheckBox(m.getENCLOSURE_URL()) });
+			model.addRow(new Object[] { new JCheckBox(m.getENCLOSURE_URL()),
+					m.getTitle(), m.getAuthor(), m.getPubData(),
+					m.getDuration(), Util.transSize(m.getENCLOSURE_Length()),
+					m.getENCLOSURE_TYPE() });
 		}
+
 		this.detail.setModel(model);
 		this.detail.getColumn("Select").setCellEditor(
 				new CheckButtonEditor(new JCheckBox()));
@@ -842,7 +844,7 @@ public class MainFrame extends javax.swing.JFrame {
 		if (a == 0) {
 			if (node.getParent() != null && node.getParent() != this.root)
 				this.model.removeNodeFromParent(node);
-			
+
 			JDomPodCastURL url = RunTime.findFeedByName(node.toString());
 			RunTime.CONFIG.feed_au.remove(url);
 			RunTime.selectedFileName = "";
