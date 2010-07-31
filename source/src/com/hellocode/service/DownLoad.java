@@ -34,9 +34,9 @@ public class DownLoad {
 			// skip if had downloaded.
 			return;
 		}
-		//down load it
+		// down load it
 		NetWorkingUtil.download(url, abs_name);
-		
+
 		// check the file size
 		File file = new File(abs_name);
 		if (file.exists() && file.length() == 0) {
@@ -77,27 +77,35 @@ public class DownLoad {
 		if (urlList.isEmpty()) {
 			return;
 		}
+		
 		this.folder_name = ipath;
 		if (!this.checkDir()) {
 			return;
 		}
 		final Thread thread = new Thread(new Runnable() {
+			final ThreadLocal<ArrayList<String>> files = new ThreadLocal<ArrayList<String>>();
 			@Override
 			public void run() {
+				
+				files.set(urlList);
+
 				String test = job_count.toString();
+				Thread.currentThread().setName(test);
 				DownLoad.this.add();
-				for (String url : urlList) {
+				for (String url : files.get()) {
+					//get file
 					DownLoad.this.getFile(url);
-					System.out.println(test + "downloading..." + url);
+					System.out.println(Thread.currentThread().getName() + "---"
+							+ test + "downloading..." + url);
 					PodCast.main.lb_down_load.setText("完成:" + url);
-					//PodCast.main.lb_info.setText("完成:" + url);
+					// PodCast.main.lb_info.setText("完成:" + url);
 				}
 				DownLoad.this.sub();
-				PodCast.main.lb_down_load.setText("还有"+ job_count + "个下载线程");
-				
+				PodCast.main.lb_down_load.setText("还有" + job_count + "个下载线程");
+
 				if (job_count == 0) {
 					PodCast.main.lb_down_load.setText("下载任务全部完成");
-					//PodCast.main.lb_info.setText("任务全部完成");
+					// PodCast.main.lb_info.setText("任务全部完成");
 				}
 
 			}
