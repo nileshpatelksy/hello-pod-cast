@@ -1,5 +1,7 @@
 package com.hellocode.service;
 
+import java.io.FileNotFoundException;
+
 import com.hellocode.main.PodCast;
 import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.util.FileUtil;
@@ -12,15 +14,15 @@ public final class RunTime {
 	public static boolean synchronizing = false;
 	public static Config CONFIG = new Config();
 	public static boolean refreshing = false;
-	
 
-	public static void resetAll(){
+	public static void resetAll() {
 		FileUtil.deleteFile(CONFIG_XML);
 	}
+
 	public static void destroy() {
 		try {
-			//clear all the items, do not save to XML configuration file
-			for(JDomPodCastURL pod :RunTime.CONFIG.feed_au){
+			// clear all the items, do not save to XML configuration file
+			for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 				pod.clearMedia();
 			}
 			XML2JavaUtil.java2XML(CONFIG_XML, RunTime.CONFIG);
@@ -34,12 +36,16 @@ public final class RunTime {
 
 		try {
 			CONFIG = XML2JavaUtil.XML2Java(CONFIG_XML);
-		} catch (Exception e) {
+			CONFIG.first_time_use = false;
+		}catch(FileNotFoundException fe){
+			CONFIG.first_time_use = true;
+		}catch (Exception e) {
 			e.printStackTrace();
 			FileUtil.deleteFile(CONFIG_XML);
-			CONFIG = new Config();			
+			CONFIG = new Config();
+			CONFIG.first_time_use = true;
 		}
-		
+
 		FileUtil.createDir(CONFIG.disk_main);
 		// feed_tv.add(url);
 	}
@@ -54,6 +60,49 @@ public final class RunTime {
 		return null;
 	}
 
+	public static void refreshOne(final String name) {
+		PodCast.main.lb_info.setText("正在更新" + name + ",请稍候...");
+		if (RunTime.CONFIG.feed_au.size() == 0) {
+			PodCast.main.lb_info.setText("您没有订阅任何feed,请点击Add Feed. 谢谢使用");
+		}
+		if (refreshing) {
+			PodCast.main.lb_info.setText("线程冲突，等待上一个线程刷新");
+			return;
+		}
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				synchronized (RunTime.CONFIG.feed_au) {
+					refreshing = true;
+					try {
+						System.out.println("刷新Name=="+name);
+						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
+							if (pod.getName().equalsIgnoreCase(name)) {
+								PodCast.main.lb_info.setText(pod.getName()
+										+ "正在更新" + pod.getURL());
+								pod.reFreshURL();
+								
+								break;
+							}
+							System.out.println("POD.Name=="+pod.getName());
+						}
+						// PodCast.main.lb_note.setText("feeds完成更新!");
+						PodCast.main.lb_info.setText("完成更新!");
+					} catch (Exception e) {
+						refreshing = false;
+					} finally {
+						refreshing = false;
+					}
+					refreshing = false;
+				}
+			}
+		}).start();
+		System.out.println("runing...");
+	}
+
 	public static void refreshAll() {
 		PodCast.main.lb_info.setText("正在更新feed,请稍候...");
 		if (RunTime.CONFIG.feed_au.size() == 0) {
@@ -63,25 +112,25 @@ public final class RunTime {
 			PodCast.main.lb_info.setText("线程冲突，等待上一个线程刷新");
 			return;
 		}
-		
+
 		new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				
+
 				synchronized (RunTime.CONFIG.feed_au) {
 					refreshing = true;
 					try {
 						System.out.println("runing...");
 						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 							System.out.println("runing...");
-							//PodCast.main.lb_note.setText("正在更新"+pod.getName());
+							// PodCast.main.lb_note.setText("正在更新"+pod.getName());
 							PodCast.main.lb_info.setText(pod.getName() + "正在更新"
 									+ pod.getURL());
 
 							pod.reFreshURL();
 						}
-						//PodCast.main.lb_note.setText("feeds完成更新!");
+						// PodCast.main.lb_note.setText("feeds完成更新!");
 						PodCast.main.lb_info.setText("完成更新!");
 						System.out.println("runing...");
 					} catch (Exception e) {

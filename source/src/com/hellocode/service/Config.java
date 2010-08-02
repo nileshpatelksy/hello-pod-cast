@@ -19,6 +19,7 @@ public final class Config {
 	public String proxy_name = "";
 	public String proxy_pswd = "";
 	public boolean proxy_enabel = false;
+	public boolean first_time_use = true;
 	private static final int proxy_timeout = 3838;
 
 	public Config() {
