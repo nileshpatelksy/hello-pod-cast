@@ -37,7 +37,10 @@ public final class PodCast {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		if(RunTime.CONFIG.first_time_use){
+			//Welcome new user.
+			main.lb_info.setText("ª∂”≠ π”√Hello PodCast");
+		}
 	}
 
 }
