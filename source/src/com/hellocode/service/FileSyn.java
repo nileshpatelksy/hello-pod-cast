@@ -1,7 +1,5 @@
 package com.hellocode.service;
 
-import java.io.File;
-
 import com.hellocode.util.FileUtil;
 
 public class FileSyn {

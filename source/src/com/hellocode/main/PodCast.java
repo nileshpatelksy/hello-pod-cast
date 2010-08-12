@@ -5,6 +5,7 @@ package com.hellocode.main;
 
 import com.hellocode.service.RunTime;
 import com.hellocode.ui.MainFrame;
+import com.hellocode.util.Util;
 
 /**
  * @author Administrator
@@ -29,8 +30,10 @@ public final class PodCast {
 
 		main = new MainFrame();
 		main.setVisible(true);
+		main.setTitle("@Hello Podcast");
+		main.setDefaultLookAndFeelDecorated(true);
 
-		System.out.println("Main...");
+		Util.print("Main...");
 		try {
 			Thread.sleep(500);
 			RunTime.refreshAll();

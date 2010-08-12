@@ -26,7 +26,7 @@ public class Test extends javax.swing.JFrame {
 	private void init() {
 		this.slider = new JFlexiSlider(new Range[] { new Range("A", true,80),
 				new Range("B", false,80), new Range("C", true, 80) }, new Icon[]{new ImageIcon("code_logo.png"),new ImageIcon("code_logo.png"),new ImageIcon("code_logo.png"),new ImageIcon("code_logo.png")},
-				new String[] { "A-M", "B-m-f", "C-t-l", "Another-t-l" });
+				new String[] { "1A-M", "2B-m-f", "3C-t-l", "4Another-t-l" });
 		//this.add(this.slider);
 		this.getContentPane().add(
 				this.slider,

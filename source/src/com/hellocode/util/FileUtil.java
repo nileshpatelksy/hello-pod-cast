@@ -8,6 +8,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.hellocode.main.PodCast;
+
 public class FileUtil {
 
 	public static void createDir(String full_path) {
@@ -15,7 +17,7 @@ public class FileUtil {
 		// 如果存在文件夹dir，
 		File dFile = new File(full_path);
 		if (!dFile.exists()) {
-			System.out.println("创建空盘" + full_path);
+			Util.print("创建空盘" + full_path);
 			dFile.mkdir();
 		}
 		if (dFile.exists() && dFile.isFile()) {
@@ -33,8 +35,8 @@ public class FileUtil {
 	private static int BUFFER_SIZE = 1024;
 
 	public static boolean copy(File src, File dst) {
-		System.out.println("copy:src=" + src.getAbsolutePath());
-		System.out.println("copy:dst=" + dst.getAbsolutePath());
+		Util.print("copy:src=" + src.getAbsolutePath());
+		Util.print("copy:dst=" + dst.getAbsolutePath());
 		try {
 			InputStream in = null;
 			OutputStream out = null;
@@ -63,12 +65,12 @@ public class FileUtil {
 	}
 
 	public static boolean copyFolder(String src, String dst) {
-		System.out.println("copyFolder=" + src);
-		System.out.println("copyFolder=" + dst);
+		Util.print("copyFolder=" + src);
+		Util.print("copyFolder=" + dst);
 		File sFile = new File(src);
 		File dFile = new File(dst);
 		if (!sFile.exists()) {
-			System.out.println("no folder");
+			Util.print("no folder");
 			return false;
 		}
 		if (sFile.isDirectory()) {
@@ -78,7 +80,17 @@ public class FileUtil {
 			File[] list = sFile.listFiles();
 			String newFileString = "";
 			File newFile = null;
+			int doing = 0;
+			int all = list.length;
+			PodCast.main.copygress.setMax(all);
+			PodCast.main.copygress.setDoing(0);
 			for (File f : list) {
+				all = list.length;
+				PodCast.main.copygress.setMax(all);
+				PodCast.main.copygress.setDone(doing);
+				doing++;
+				PodCast.main.copygress.setDoing(doing);
+
 				newFileString = dFile.getAbsolutePath() + File.separator
 						+ f.getName();
 				newFile = new File(newFileString);
@@ -91,7 +103,7 @@ public class FileUtil {
 							+ File.separator + f.getName());
 				}
 			}
-
+			PodCast.main.copygress.setDone("完成"+sFile.getName());
 		} else {
 			// not over write the old file, check is it exist.
 			if (dFile.isFile() && !dFile.exists()) {
@@ -102,7 +114,7 @@ public class FileUtil {
 	}
 
 	public static boolean deleteFile(String src) {
-		System.out.println("deleteFile=" + src);
+		Util.print("deleteFile=" + src);
 		File delFile = new File(src);
 		try {
 			if (delFile.exists() && delFile.isFile()) {
@@ -118,7 +130,7 @@ public class FileUtil {
 
 	public static boolean deleteFile(File src) {
 		try {
-			System.out.println("deleteFile=" + src);
+			Util.print("deleteFile=" + src);
 			if (src.exists() && src.isFile()) {
 				return src.delete();
 			} else {
@@ -132,7 +144,7 @@ public class FileUtil {
 
 	public static boolean deleteFolder(File src) {
 		try {
-			System.out.println("deleteFolder=" + src);
+			Util.print("deleteFolder=" + src);
 			if (!src.exists()) {
 				// no file
 			}

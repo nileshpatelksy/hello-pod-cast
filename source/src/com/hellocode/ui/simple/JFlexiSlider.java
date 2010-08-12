@@ -35,6 +35,7 @@ import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 
 import com.hellocode.ui.simple.FlexiRangeModel.Range;
+import com.hellocode.ui.simple.FlexiRangeModel.Value;
 import com.hellocode.ui.simple.ui.BasicFlexiSliderUI;
 import com.hellocode.ui.simple.ui.FlexiSliderUI;
 
@@ -65,8 +66,10 @@ public class JFlexiSlider extends JComponent {
 	 */
 	public void updateUI() {
 		if (UIManager.get(getUIClassID()) != null) {
+			//自定义look and feel
 			setUI((FlexiSliderUI) UIManager.getUI(this));
 		} else {
+			//基本UI
 			setUI(new BasicFlexiSliderUI());
 		}
 	}
@@ -99,7 +102,16 @@ public class JFlexiSlider extends JComponent {
 	private Icon[] controlPointIcons;
 	
 	private String[] controlPointTexts;
-
+	/**
+	 * init a Slider
+	 * the args size should be correspond.
+	 * range=1;icon=2;text=2
+	 * @param ranges 
+	 * @param controlPointIcons image
+	 * @param controlPointTexts
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
+	 */
 	public JFlexiSlider(Range[] ranges, Icon[] controlPointIcons,
 			String[] controlPointTexts) throws NullPointerException,
 			IllegalArgumentException {
@@ -149,7 +161,7 @@ public class JFlexiSlider extends JComponent {
 		return this.model;
 	}
 
-	public FlexiRangeModel.Value getValue() {
+	public Value getValue() {
 		return this.model.getValue();
 	}
 

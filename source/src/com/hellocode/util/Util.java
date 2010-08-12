@@ -1,5 +1,8 @@
 package com.hellocode.util;
 
+import java.util.Date;
+import java.util.Random;
+
 public class Util {
 	private static Double d;
 	private static Double f;
@@ -16,4 +19,28 @@ public class Util {
 			return 0 + unit;
 		}
 	}
+
+	public static String getRandomFileName() {
+		String result = "r" + DateUtil.getDateString();
+		return result;
+	}
+
+	public static void print(String msg) {
+		System.out.println("INFO:#   " + msg);
+	}
+
+	public static void main(String[] args) {
+		Util.print(getRandomFileName());
+	}
+
+	// spit url 2 name
+	public static String getFileName(String url) {
+		int i = url.lastIndexOf('/');
+		String name = url.substring(i + 1);
+		Util.print("extract file name :== " + name);
+		return name;
+	}
+
+	private static final Random rnd = new Random();
+	private static final Date date = new Date();
 }

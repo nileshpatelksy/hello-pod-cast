@@ -1,18 +1,12 @@
 package com.hellocode.service;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 import com.hellocode.main.PodCast;
 import com.hellocode.util.FileUtil;
 import com.hellocode.util.NetWorkingUtil;
+import com.hellocode.util.Util;
 
 public class DownLoad {
 	public volatile static Integer job_count = 0;
@@ -25,46 +19,40 @@ public class DownLoad {
 
 		FileUtil.createDir(RunTime.CONFIG.disk_main + File.separator
 				+ folder_name);
-		String name = this.getFileName(url);// copy
+		String name = Util.getFileName(url);// copy
 		String abs_name = RunTime.CONFIG.disk_main + File.separator
-				+ this.folder_name + File.separator + name;
+				+ this.folder_name ;
 
-		System.out.println("$$$$$$:   " + abs_name);
-		if (new File(abs_name).exists()) {
-			// skip if had downloaded.
-			return;
-		}
+		Util.print("$$$$$$:   " + abs_name);
+//		if (new File(abs_name).exists()) {
+//			// skip if had downloaded.
+//			return;
+//		}
 		// down load it
 		NetWorkingUtil.download(url, abs_name);
 
-		// check the file size
-		File file = new File(abs_name);
-		if (file.exists() && file.length() == 0) {
-			file.delete();
-		}
+//		// check the file size
+//		File file = new File(abs_name);
+//		if (file.exists() && file.length() == 0) {
+//			file.delete();
+//		}
 
 	}
 
-	// spit url 2 name
-	private String getFileName(String url) {
-		int i = url.lastIndexOf('/');
-		String name = url.substring(i + 1);
-		System.out.println("extract file name :== " + name);
-		return name;
-	}
+	
 
 	private synchronized void add() {
 		synchronized (job_count) {
 			job_count++;
 		}
-		System.out.println("job_count..." + job_count);
+		Util.print("job_count..." + job_count);
 	}
 
 	private synchronized void sub() {
 		synchronized (job_count) {
 			job_count--;
 		}
-		System.out.println("job_count..." + job_count);
+		Util.print("job_count..." + job_count);
 	}
 
 	/**
@@ -77,35 +65,51 @@ public class DownLoad {
 		if (urlList.isEmpty()) {
 			return;
 		}
-		
+
 		this.folder_name = ipath;
 		if (!this.checkDir()) {
 			return;
 		}
+		
+		
 		final Thread thread = new Thread(new Runnable() {
 			final ThreadLocal<ArrayList<String>> files = new ThreadLocal<ArrayList<String>>();
+
 			@Override
 			public void run() {
-				
-				files.set(urlList);
 
+				files.set(urlList);
+				
 				String test = job_count.toString();
 				Thread.currentThread().setName(test);
 				DownLoad.this.add();
+				PodCast.main.lb_info.setText("添加下载线程，共" + job_count + "个下载线程");
+				int all = files.get().size();
+				int doing = 0;
+				PodCast.main.progress.setMax(all);
 				for (String url : files.get()) {
-					//get file
+					
+					all = files.get().size();
+					PodCast.main.progress.setMax(all);
+					PodCast.main.progress.setDone(doing);
+					doing++;
+					PodCast.main.progress.setDoing(doing);
+					// get file
 					DownLoad.this.getFile(url);
-					System.out.println(Thread.currentThread().getName() + "---"
+					Util.print(Thread.currentThread().getName() + "---"
 							+ test + "downloading..." + url);
-					PodCast.main.lb_down_load.setText("完成:" + url);
-					// PodCast.main.lb_info.setText("完成:" + url);
+					
+					//PodCast.main.lb_info.setText("完成:" + url);
 				}
+				files.remove();
 				DownLoad.this.sub();
-				PodCast.main.lb_down_load.setText("还有" + job_count + "个下载线程");
+				PodCast.main.progress.setDone("还有" + job_count + "个下载线程");
+				PodCast.main.lb_info.setText(DownLoad.this.folder_name+"已经完成,剩余" + job_count + "个下载线程");
+				
 
 				if (job_count == 0) {
-					PodCast.main.lb_down_load.setText("下载任务全部完成");
-					// PodCast.main.lb_info.setText("任务全部完成");
+					PodCast.main.progress.setDone("下载线程全部完成");
+					PodCast.main.lb_info.setText("下载线程全部完成");
 				}
 
 			}

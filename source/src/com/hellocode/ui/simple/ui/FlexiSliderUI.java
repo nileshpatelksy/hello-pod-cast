@@ -35,7 +35,7 @@ import com.hellocode.ui.simple.JFlexiSlider;
 
 /**
  * UI for flexi slider ({@link JFlexiSlider}).
- * 
+ * ×Ô¶¨Òå look and feel UI
  * @author Kirill Grouchnikov
  */
 public abstract class FlexiSliderUI extends ComponentUI {

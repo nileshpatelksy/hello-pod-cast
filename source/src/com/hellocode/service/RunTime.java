@@ -2,9 +2,11 @@ package com.hellocode.service;
 
 import java.io.FileNotFoundException;
 
+import com.hellocode.exception.NetProblem;
 import com.hellocode.main.PodCast;
 import com.hellocode.model.JDomPodCastURL;
 import com.hellocode.util.FileUtil;
+import com.hellocode.util.Util;
 import com.hellocode.util.XML2JavaUtil;
 
 public final class RunTime {
@@ -29,7 +31,7 @@ public final class RunTime {
 		} catch (Exception e) {
 			FileUtil.deleteFile(CONFIG_XML);
 		}
-		System.out.println("DESTROY");
+		Util.print("DESTROY");
 	}
 
 	public static void init() {
@@ -78,16 +80,22 @@ public final class RunTime {
 				synchronized (RunTime.CONFIG.feed_au) {
 					refreshing = true;
 					try {
-						System.out.println("刷新Name=="+name);
+						Util.print("刷新Name=="+name);
 						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
 							if (pod.getName().equalsIgnoreCase(name)) {
 								PodCast.main.lb_info.setText(pod.getName()
 										+ "正在更新" + pod.getURL());
-								pod.reFreshURL();
+								int mark = pod.reFreshURL();
+								if(mark<=0){
+									PodCast.main.lb_info.setText("feed无法获取.原因:网络异常,请设置代理!");
+									PodCast.main.progress.setDone("feed无法获取.原因:网络异常,请设置代理!");
+									throw new NetProblem();
+									
+								}
 								
 								break;
 							}
-							System.out.println("POD.Name=="+pod.getName());
+							Util.print("POD.Name=="+pod.getName());
 						}
 						// PodCast.main.lb_note.setText("feeds完成更新!");
 						PodCast.main.lb_info.setText("完成更新!");
@@ -100,7 +108,7 @@ public final class RunTime {
 				}
 			}
 		}).start();
-		System.out.println("runing...");
+		Util.print("runing...");
 	}
 
 	public static void refreshAll() {
@@ -121,9 +129,9 @@ public final class RunTime {
 				synchronized (RunTime.CONFIG.feed_au) {
 					refreshing = true;
 					try {
-						System.out.println("runing...");
+						Util.print("runing...");
 						for (JDomPodCastURL pod : RunTime.CONFIG.feed_au) {
-							System.out.println("runing...");
+							Util.print("runing...");
 							// PodCast.main.lb_note.setText("正在更新"+pod.getName());
 							PodCast.main.lb_info.setText(pod.getName() + "正在更新"
 									+ pod.getURL());
@@ -132,7 +140,7 @@ public final class RunTime {
 						}
 						// PodCast.main.lb_note.setText("feeds完成更新!");
 						PodCast.main.lb_info.setText("完成更新!");
-						System.out.println("runing...");
+						Util.print("runing...");
 					} catch (Exception e) {
 						refreshing = false;
 					} finally {
@@ -142,12 +150,18 @@ public final class RunTime {
 				}
 			}
 		}).start();
-		System.out.println("runing...");
+		Util.print("runing...");
 	}
 
 	public static void main(String[] args) {
 		// RunTime run = new RunTime();
-		System.out.println(RunTime.CONFIG.disk_main);
+		Util.print(RunTime.CONFIG.disk_main);
 
+	}
+
+	public static String font_name="黑体";
+	public static String getFont(){
+		//if there is no such a Font, what shall I do?
+		return font_name;
 	}
 }

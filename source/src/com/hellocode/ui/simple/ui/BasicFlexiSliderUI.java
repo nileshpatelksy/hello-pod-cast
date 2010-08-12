@@ -53,6 +53,7 @@ import javax.swing.plaf.ComponentUI;
 
 import com.hellocode.ui.simple.FlexiRangeModel;
 import com.hellocode.ui.simple.JFlexiSlider;
+import com.hellocode.ui.simple.FlexiRangeModel.Value;
 
 /**
  * Basic UI for flexi slider {@link JFlexiSlider}.
@@ -63,25 +64,18 @@ public class BasicFlexiSliderUI extends FlexiSliderUI {
 	/**
 	 * The associated flexi slider.
 	 */
+	// delegate pattern
 	protected JFlexiSlider flexiSlider;
-
+	//composite kit
 	protected JLabel[] controlPointLabels;
-
 	protected JSlider slider;
-
 	protected CellRendererPane sliderRendererPane;
-
+	//listener
 	protected MouseListener mouseListener;
-
 	protected MouseMotionListener mouseMotionListener;
-
 	protected ChangeListener flexiSliderChangeListener;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see javax.swing.plaf.ComponentUI#createUI(javax.swing.JComponent)
-	 */
+	//implements interface
 	public static ComponentUI createUI(JComponent c) {
 		return new BasicFlexiSliderUI();
 	}
@@ -225,7 +219,7 @@ public class BasicFlexiSliderUI extends FlexiSliderUI {
 				sliderBounds.width, sliderBounds.height, true);
 	}
 
-	protected int modelValueToSliderValue(FlexiRangeModel.Value modelValue) {
+	protected int modelValueToSliderValue(Value modelValue) {
 		if (modelValue == null)
 			return 0;
 
@@ -259,7 +253,7 @@ public class BasicFlexiSliderUI extends FlexiSliderUI {
 		return 0;
 	}
 
-	protected FlexiRangeModel.Value sliderValueToModelValue(int sliderValue) {
+	protected Value sliderValueToModelValue(int sliderValue) {
 		// get the model
 		FlexiRangeModel model = this.flexiSlider.getModel();
 		// iterate over the ranges and try to find range that contains the

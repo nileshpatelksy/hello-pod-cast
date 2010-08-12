@@ -9,6 +9,8 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 
+import com.hellocode.util.Util;
+
 public class JDomPodCastURL extends XMLPodCastURL {
 
 	private String name;
@@ -76,7 +78,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 		this.clearMedia();
 		
 		if (this.URL == null) {
-			System.out.println("over");
+			Util.print("over");
 			return -1;
 		}
 		
@@ -96,7 +98,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 			this.setCopyright(channel.getChildText("copyright"));
 			this.setLanguage(channel.getChildText("language"));
 
-			System.out.println("OKOKOK&&&&&&&&&&   " + title);
+			Util.print("OKOKOK&&&&&&&&&&   " + title);
 
 			// XML path=channel.item[]; List of item
 			List items = channel.getChildren("item");
@@ -115,22 +117,22 @@ public class JDomPodCastURL extends XMLPodCastURL {
 				media.setKeywords(item.getChildText("itunes:keywords"));
 				media.setExplicit(item.getChildText("itunes:explicit"));
 				media.setDuration(item.getChildText("itunes:duration"));
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$itunes:duration =="+item.getChildText("itunes:duration"));
+				Util.print("$$$$$$$$$$$$$$$$$$$$$$$itunes:duration =="+item.getChildText("itunes:duration"));
 				Element enclosure = item.getChild("enclosure");
 				media
 						.setENCLOSURE_Length(enclosure
 								.getAttributeValue("length"));
 				media.setENCLOSURE_URL(enclosure.getAttributeValue("url"));
-				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$URL =="+enclosure.getAttributeValue("url"));
+				Util.print("$$$$$$$$$$$$$$$$$$$$$$$URL =="+enclosure.getAttributeValue("url"));
 				media.setENCLOSURE_TYPE(enclosure.getAttributeValue("type"));
 				// add media
 				this.medias.add(media);
 				String ititle = item.getChildText("title");
-				//System.out.println(ititle + "########################");
+				//Util.print(ititle + "########################");
 			}
 			this.print();
 		} catch (Exception e) {
-
+			return -1;
 		}
 
 		return 2;
@@ -138,21 +140,21 @@ public class JDomPodCastURL extends XMLPodCastURL {
 	}
 
 	public void print() {
-		System.out.println(this.getTitle());
-		System.out.println("Author:" + this.getAuthor());
-		System.out.println(this.getLink());
-		System.out.println(this.getSubtitle());
-		System.out.println("Summary:" + this.getSummary());
+		Util.print(this.getTitle());
+		Util.print("Author:" + this.getAuthor());
+		Util.print(this.getLink());
+		Util.print(this.getSubtitle());
+		Util.print("Summary:" + this.getSummary());
 
-		System.out.println("copyright:" + this.getCopyright());
+		Util.print("copyright:" + this.getCopyright());
 
-		System.out.println(this.getLanguage());
-		System.out.println(this.getOwnerName());
-		System.out.println(this.getOwnerEmail());
-		System.out.println("URL:" + this.getImageURL());
-		System.out.println("Cat:" + this.getCategory());
+		Util.print(this.getLanguage());
+		Util.print(this.getOwnerName());
+		Util.print(this.getOwnerEmail());
+		Util.print("URL:" + this.getImageURL());
+		Util.print("Cat:" + this.getCategory());
 
-		System.out.println("All itmes size=" + this.medias.size());
+		Util.print("All itmes size=" + this.medias.size());
 
 	}
 
@@ -177,7 +179,7 @@ public class JDomPodCastURL extends XMLPodCastURL {
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass()) {
-			System.out.println("sorry");
+			Util.print("sorry");
 			return false;
 		}
 		JDomPodCastURL other = (JDomPodCastURL) obj;
