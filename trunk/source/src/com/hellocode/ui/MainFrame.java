@@ -43,6 +43,7 @@ import com.hellocode.model.MediaItem;
 import com.hellocode.service.DownLoad;
 import com.hellocode.service.FileSyn;
 import com.hellocode.service.RunTime;
+import com.hellocode.ui.mead.MeadProgress;
 import com.hellocode.util.Util;
 import com.hellocode.util.XML2JavaUtil;
 
@@ -67,8 +68,29 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 
 	private DefaultTreeModel model;
+	public MeadProgress progress;
+	public MeadProgress copygress;
 
 	private void init() {
+		this.lb_msg.setFont(new java.awt.Font(RunTime.font_name, 1, 14));
+		this.lb_info.setFont(new java.awt.Font(RunTime.font_name, 1, 14));
+		this.ck_use_proxy.setFont(new java.awt.Font(RunTime.font_name, 1, 14));
+
+		this.progress = new MeadProgress(1, 10, 10, 20, 300, "没有下载任务");
+		jPanel1.add(this.progress,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1,
+						-1));
+
+		this.progress.setDone("没有下载任务");
+		this.progress.setVisible(true);
+
+		this.copygress = new MeadProgress(1, 10, 10, 20, 400, "没有下载任务");
+		jPanel3.add(copygress,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1,
+						-1));
+		this.copygress.setDone("没有文件拷贝");
+		this.copygress.setVisible(true);
+
 		this.jTree1.setRootVisible(false);
 		// this.jTree1.setToolTipText("10new");
 		this.jTree1.setExpandsSelectedPaths(true);
@@ -101,7 +123,7 @@ public class MainFrame extends javax.swing.JFrame {
 			public void windowClosing(WindowEvent e) {
 
 				// System.exit(0);
-				System.out.println("OUT...");
+				Util.print("OUT...");
 				int a = 0;
 				if (RunTime.synchronizing || DownLoad.job_count != 0) {
 					a += JOptionPane.showConfirmDialog(null,
@@ -179,8 +201,6 @@ public class MainFrame extends javax.swing.JFrame {
 		lb_info = new javax.swing.JLabel();
 		btn_download = new javax.swing.JButton();
 		ck_select_all = new javax.swing.JCheckBox();
-		lb_down_load = new javax.swing.JLabel();
-		jProgressBar1 = new javax.swing.JProgressBar();
 		jPanel3 = new javax.swing.JPanel();
 		jScrollPane1 = new javax.swing.JScrollPane();
 		txt_main_disk = new javax.swing.JTextPane();
@@ -213,6 +233,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 		jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+		jTree1.setToolTipText("right click to refresh or delete");
 		jTree1.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseReleased(java.awt.event.MouseEvent evt) {
 				jTree1MouseReleased(evt);
@@ -231,6 +252,8 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140,
 						340));
 
+		btn_add_au.setFont(new java.awt.Font("Tahoma", 1, 11));
+		btn_add_au.setForeground(new java.awt.Color(51, 102, 255));
 		btn_add_au.setText("Add Feed");
 		btn_add_au.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,17 +261,20 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel1.add(btn_add_au,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120,
 						30));
 
-		btn_refresh_all.setText("Refresh All");
+		btn_refresh_all.setFont(new java.awt.Font("Tahoma", 1, 11));
+		btn_refresh_all.setForeground(new java.awt.Color(51, 102, 255));
+		btn_refresh_all.setText("Refresh Feed");
+		btn_refresh_all.setToolTipText("refresh all feeds");
 		btn_refresh_all.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btn_refresh_allActionPerformed(evt);
 			}
 		});
 		jPanel1.add(btn_refresh_all,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 100,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 130,
 						30));
 
 		detail.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
@@ -267,39 +293,38 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 610,
 						310));
 
+		lb_info.setFont(new java.awt.Font("Tahoma", 1, 11));
+		lb_info.setForeground(new java.awt.Color(204, 0, 0));
 		lb_info
 				.setText("Welcome! Add your feed, refresh, select & download media....   Enjoy it!");
 		jPanel1.add(lb_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				240, 60, 530, 30));
+				260, 50, 530, 30));
 
-		btn_download.setText("DownLoad");
+		btn_download.setFont(new java.awt.Font("Tahoma", 1, 12));
+		btn_download.setForeground(new java.awt.Color(51, 51, 255));
+		btn_download.setText("DownLoad Item");
+		btn_download.setToolTipText("download the selected items");
 		btn_download.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				btn_downloadActionPerformed(evt);
 			}
 		});
 		jPanel1.add(btn_download,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 100,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 150,
 						30));
 
+		ck_select_all.setFont(new java.awt.Font("Tahoma", 1, 11));
+		ck_select_all.setForeground(new java.awt.Color(51, 51, 255));
 		ck_select_all.setText("Select All");
+		ck_select_all.setToolTipText("select them in table");
 		ck_select_all.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				ck_select_allActionPerformed(evt);
 			}
 		});
 		jPanel1.add(ck_select_all,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1,
 						30));
-
-		lb_down_load
-				.setText("                                                                                                              ");
-		jPanel1.add(lb_down_load,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 510,
-						20));
-		jPanel1.add(jProgressBar1,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, 530,
-						-1));
 
 		jTabbedPane1.addTab("Pod Cast", jPanel1);
 
@@ -308,17 +333,19 @@ public class MainFrame extends javax.swing.JFrame {
 		jScrollPane1.setViewportView(txt_main_disk);
 
 		jPanel3.add(jScrollPane1,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 440,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 440,
 						70));
 
 		jLabel2.setText("Other Disk");
 		jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				0, 180, -1, 20));
+				10, 200, -1, 20));
 
 		jLabel4.setText("Main Disk");
 		jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				0, 70, 60, 20));
+				20, 70, 60, 20));
 
+		jButton1.setFont(new java.awt.Font("Tahoma", 1, 11));
+		jButton1.setForeground(new java.awt.Color(51, 102, 255));
 		jButton1.setText("Apply Now!");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,18 +353,21 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel3.add(jButton1,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360,
-						110, -1));
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 353,
+						110, 30));
 
+		jButton2.setFont(new java.awt.Font("Tahoma", 1, 14));
+		jButton2.setForeground(new java.awt.Color(51, 51, 255));
 		jButton2.setText("Synchronization");
+		jButton2.setToolTipText("copy files");
 		jButton2.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				jButton2ActionPerformed(evt);
 			}
 		});
 		jPanel3.add(jButton2,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 180,
-						-1));
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 13, 170,
+						40));
 
 		list_disk.setModel(new javax.swing.AbstractListModel() {
 			String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4",
@@ -354,9 +384,11 @@ public class MainFrame extends javax.swing.JFrame {
 		jScrollPane4.setViewportView(list_disk);
 
 		jPanel3.add(jScrollPane4,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 440,
-						110));
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 450,
+						90));
 
+		jButton3.setFont(new java.awt.Font("Tahoma", 1, 11));
+		jButton3.setForeground(new java.awt.Color(51, 102, 255));
 		jButton3.setText("Select File");
 		jButton3.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,6 +399,8 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 110,
 						-1));
 
+		jButton4.setFont(new java.awt.Font("Tahoma", 1, 11));
+		jButton4.setForeground(new java.awt.Color(51, 102, 255));
 		jButton4.setText("Add File");
 		jButton4.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -374,7 +408,7 @@ public class MainFrame extends javax.swing.JFrame {
 			}
 		});
 		jPanel3.add(jButton4,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200,
 						110, -1));
 
 		ck_down_load.setSelected(true);
@@ -383,6 +417,8 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1,
 						30));
 
+		jButton5.setFont(new java.awt.Font("Tahoma", 1, 11));
+		jButton5.setForeground(new java.awt.Color(51, 102, 255));
 		jButton5.setText("Delete");
 		jButton5.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,6 +429,8 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230,
 						110, -1));
 
+		ck_use_proxy.setFont(new java.awt.Font("Tahoma", 1, 11));
+		ck_use_proxy.setForeground(new java.awt.Color(255, 0, 51));
 		ck_use_proxy.setSelected(true);
 		ck_use_proxy.setText("Use Proxy");
 		ck_use_proxy.addActionListener(new java.awt.event.ActionListener() {
@@ -404,6 +442,8 @@ public class MainFrame extends javax.swing.JFrame {
 				new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420,
 						120, 30));
 
+		lb_msg.setFont(new java.awt.Font("Tahoma", 1, 14));
+		lb_msg.setForeground(new java.awt.Color(153, 0, 51));
 		lb_msg.setText("Select other protable device, then sync them...");
 		jPanel3.add(lb_msg, new org.netbeans.lib.awtextra.AbsoluteConstraints(
 				320, 20, 250, 30));
@@ -441,9 +481,11 @@ public class MainFrame extends javax.swing.JFrame {
 		jPanel3.add(lb_msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(
 				70, 390, 60, 30));
 
+		lb_msg3.setFont(new java.awt.Font("Tahoma", 1, 12));
+		lb_msg3.setForeground(new java.awt.Color(0, 0, 255));
 		lb_msg3.setText("Hello PodCast @2010  laiqinyi@gmail.com");
 		jPanel3.add(lb_msg3, new org.netbeans.lib.awtextra.AbsoluteConstraints(
-				500, 400, 230, 30));
+				430, 410, 350, 30));
 
 		lb_msg4.setText("Proxy IP");
 		jPanel3.add(lb_msg4, new org.netbeans.lib.awtextra.AbsoluteConstraints(
@@ -624,23 +666,23 @@ public class MainFrame extends javax.swing.JFrame {
 				if (bool.isSelected()) {
 
 					tmp += this.detail.getModel().getValueAt(i, 1).toString();
-					System.out.println(bool.getText() + " ==bool:"
+					Util.print(bool.getText() + " ==bool:"
 							+ bool.isSelected());
 					files.add(bool.getText());
 				}
 			}
 			if (files.size() == 0) {
-				PodCast.main.lb_down_load.setText("没选择文件");
+				PodCast.main.progress.setDone("没选择文件");
 				return;
 			}
-			PodCast.main.lb_down_load.setText("正在下载,请稍候...");
+			PodCast.main.progress.setDoing(0);
 			// PodCast.main.lb_info.setText("正在下载,请稍候...");
 		} catch (Exception e) {
 			PodCast.main.lb_info.setText("你没选择文件，或者选择左边树上的feed");
 			return;
 		}
 		new DownLoad().Process(files, RunTime.selectedFileName);
-		System.out.println("downloading...");
+		Util.print("downloading...");
 	}
 
 	private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -650,9 +692,9 @@ public class MainFrame extends javax.swing.JFrame {
 		String path = null;
 		if (result == JFileChooser.APPROVE_OPTION) {
 			path = fDialog.getSelectedFile().getAbsolutePath();
-			System.out.println(path + "mead");
+			Util.print(path + "mead");
 		}
-		// System.out.println(path+"mead");
+		// Util.print(path+"mead");
 		// this.txt_main_disk.setText(path);
 		if (path.equalsIgnoreCase("") || path == null) {
 
@@ -683,9 +725,9 @@ public class MainFrame extends javax.swing.JFrame {
 		String path = RunTime.CONFIG.disk_main;
 		if (result == JFileChooser.APPROVE_OPTION) {
 			path = fDialog.getSelectedFile().getAbsolutePath();
-			System.out.println(path + "  ##");
+			Util.print(path + "  ##");
 		}
-		// System.out.println(path+"mead");
+		// Util.print(path+"mead");
 		this.txt_main_disk.setText(path);
 		RunTime.CONFIG.disk_main = path;
 	}
@@ -712,6 +754,7 @@ public class MainFrame extends javax.swing.JFrame {
 					MainFrame.this.lb_msg.setText("正在同步文件...");
 					FileSyn file = new FileSyn();
 					file.Process();
+					PodCast.main.copygress.setDone("全部文件同步完成");
 					MainFrame.this.lb_msg.setText("文件同步已经完成");
 				} catch (Exception e) {
 					RunTime.synchronizing = false;
@@ -899,7 +942,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 		this.expandAll(this.jTree1, new TreePath(this.root), true);
 		feed.reFreshURL();
-		System.out.println("已经更新Feed");
+		Util.print("已经更新Feed");
 	}
 
 	private DefaultMutableTreeNode root = new DefaultMutableTreeNode("ALL ");
@@ -955,14 +998,12 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel3;
-	private javax.swing.JProgressBar jProgressBar1;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JScrollPane jScrollPane3;
 	private javax.swing.JScrollPane jScrollPane4;
 	private javax.swing.JTabbedPane jTabbedPane1;
 	private javax.swing.JTree jTree1;
-	public javax.swing.JLabel lb_down_load;
 	public javax.swing.JLabel lb_info;
 	public javax.swing.JLabel lb_msg;
 	public javax.swing.JLabel lb_msg1;

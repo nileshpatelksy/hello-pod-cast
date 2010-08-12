@@ -21,16 +21,17 @@ public class XML2JavaUtil {
                 Writer write = new OutputStreamWriter(fs);
                 write.write("Hello, world\n");
                 xs.toXML(cfg, fs);              
-                System.out.println("ok3"+xmlFile);
+                Util.print("ok3"+xmlFile);
         }
 
         public static Config XML2Java(String xmlFile) throws FileNotFoundException {
                 XStream reverse = new XStream(new DomDriver());
                 Config cfg = new Config();
                 FileInputStream fis = new FileInputStream(xmlFile);
+                
                 reverse.fromXML(fis, cfg);
                 // fis.close();
-                System.out.println(cfg.toString());
+                Util.print(cfg.toString());
                 return cfg;
         }
         public static void main(String[] args) throws Exception {

@@ -5,12 +5,11 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import com.hellocode.service.RunTime;
 
 public class NetWorkingUtil {
 
@@ -18,17 +17,63 @@ public class NetWorkingUtil {
 
 		BufferedInputStream bis = null;
 		BufferedOutputStream bos = null;
+		URLConnection urlc = null;
+		File file = null;
+		FileOutputStream fos = null;
+		String abs_name =null;
 		try {
 			URL url = new URL(http_url);
-			URLConnection urlc = url.openConnection();
+			urlc = (URLConnection) url.openConnection();
+			String type = urlc.getContentType();
+			Util.print("URL=:" + urlc.getURL());
+			for (String s : urlc.getHeaderFields().keySet()) {
+				Util.print(s + " = " + urlc.getHeaderField(s));
+			}
+			String name = Util.getFileName(urlc.getURL().toString());// copy
+			abs_name = abs_file_name + File.separator + name;
+
+			Util.print("$$$$$$:   " + abs_name);
+			if (new File(abs_name).exists()) {
+				// skip if had downloaded.
+				return;
+			}
+
+			file = new File(abs_name);
+			try {
+				file.createNewFile();
+			} catch (Exception e) {
+//				int last = abs_file_name.indexOf(File.separator,
+//						RunTime.CONFIG.disk_main.length() + 2);
+//				String fileName = abs_file_name.substring(last + 1);
+//				String pathName = abs_file_name.substring(0, last);
+//				Util.print("fileName=" + fileName);
+//				Util.print("pathName=" + pathName);
+				abs_name = abs_file_name + File.separator
+						+ Util.getRandomFileName();
+				if (type.startsWith(Media.AUDIO)) {
+					abs_file_name += Media.FILE_MP3;
+				} else {
+					abs_file_name += Media.FILE_MP4;
+				}
+				file = new File(abs_name);
+				Util.print("reConstruct file" + abs_name);
+			}
+			fos = new FileOutputStream(file);
 			bis = new BufferedInputStream(urlc.getInputStream());
-			bos = new BufferedOutputStream(new FileOutputStream(new File(
-					abs_file_name)));
+			bos = new BufferedOutputStream(fos);
+
 			int i;
 			while ((i = bis.read()) != -1) {
 				bos.write(i);
 			}
+			
+			
 		} catch (Exception e) {
+			// check the file size			
+			if (file.exists() && file.length() == 0) {
+				file.delete();
+			}
+			e.printStackTrace();
 		} finally {
 			if (bis != null)
 				try {
@@ -41,8 +86,10 @@ public class NetWorkingUtil {
 					bos.close();
 				} catch (IOException ioe) {
 					ioe.printStackTrace();
-				}
+				}		
 		}
+		
+		
 	}
 
 	/**
@@ -67,7 +114,7 @@ public class NetWorkingUtil {
 	 * null; oSavedFile = null; } catch (Exception e) { e.printStackTrace(); } }
 	 * // here shall use finally{}...close something...
 	 * 
-	 * System.out.println("save file ok =" + abs_file_name);
+	 * Util.print("save file ok =" + abs_file_name);
 	 * 
 	 * }
 	 **/

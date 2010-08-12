@@ -69,7 +69,7 @@ public class DefaultFlexiRangeModel implements FlexiRangeModel {
 	 * 
 	 * @see org.jvnet.flamingo.slider.FlexiRangeModel#setRanges(org.jvnet.flamingo.slider.FlexiRangeModel.Range[])
 	 */
-	public void setRanges(Range... ranges) {
+	public void setRanges(Range ... ranges) {
 		this.ranges = new Range[ranges.length];
 		// defensive array copy - so that changes in the application code
 		// will not be reflected in the model

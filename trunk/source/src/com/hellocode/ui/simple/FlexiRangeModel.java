@@ -3,7 +3,7 @@ package com.hellocode.ui.simple;
 import javax.swing.event.ChangeListener;
 
 public interface FlexiRangeModel {
-	public static class Range {
+	public class Range {
 		private boolean isDiscrete;
 
 		private double weight;
@@ -42,7 +42,7 @@ public interface FlexiRangeModel {
 		}
 	}
 
-	public static class Value {
+	public class Value {
 		public Range range;
 
 		public double rangeFraction;

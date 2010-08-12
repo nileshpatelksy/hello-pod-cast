@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.hellocode.model.JDomPodCastURL;
+import com.hellocode.util.Util;
 
 public final class Config {
 	public String disk_main = "C:\\PodCast";
@@ -21,7 +22,6 @@ public final class Config {
 	public boolean proxy_enabel = false;
 	public boolean first_time_use = true;
 	private static final int proxy_timeout = 3838;
-
 	public Config() {
 		// create file
 	}
@@ -61,12 +61,12 @@ public final class Config {
 			if (encoding == null || encoding.equalsIgnoreCase("")) {
 				return false;
 			} else {
-				System.out.println("代理设置成功" + encoding);
+				Util.print("代理设置成功" + encoding);
 				return true;
 			}
 
 		} catch (Exception e) {
-			System.out.println("代理设置失败");
+			Util.print("代理设置失败");
 			this.removeProxy();
 			//e.printStackTrace();
 
@@ -80,7 +80,7 @@ public final class Config {
 			}
 		}
 		this.removeProxy();
-		System.out.println("代理设置失败");
+		Util.print("代理设置失败");
 		return false;
 	}
 
