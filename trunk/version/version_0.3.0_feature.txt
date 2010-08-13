@@ -1,0 +1,32 @@
+
+      = Hello PodCast 2010 =
+http://code.google.com/p/hello-pod-cast/
+Author: Mead Lai, laiqinyi@gmail.com
+
+Under Apache License 2.0 http://www.apache.org/licenses/
+
+===Version 0.3.0
+Add Progress bar to download & copy file Panel.
+Fix some bug. such as URL redirect Error, get fake file name.
+The Progress bar is a self-define Swing-Component,
+looks not very pretty.
+
+===Version 0.2.3
+Add right menu, delete the feed & refresh
+
+===Version 0.2.2
+When the files are Coping , forbidden to close the window.
+2,Add other file.... when no file selected, there will show "tt"
+
+===Version 0.2.1
+Modify Table Model.
+Add file size, duration, title, pub time, author
+
+===Version 0.2.0
+Add Proxy networking support! you can crack the GFW now!
+Add file Synchronize to portable device.
+Persist the config to xml, recover the config
+
+===Version 0.1.0
+Prototype. basic UI: table, tree...
+Can download the mp3. no vedio support
