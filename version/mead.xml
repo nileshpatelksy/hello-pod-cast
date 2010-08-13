@@ -1,0 +1,99 @@
+<com.hellocode.service.Config>
+  <disk__main>C:\PodCast</disk__main>
+  <disk__other>
+    <string>I:\Podcast</string>
+    <string>G:\Podcast</string>
+  </disk__other>
+  <feed__au>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 15 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa15min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1319</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 5 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa5min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1491</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: 4 Minute Features</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa4min</name>
+      <medias/>
+      <URL>http://podcasts.voanews.com/podcastxml_local.cfm?id=1320</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>VOA: American Cafe</title>
+      <link>http://www.voanews.com/</link>
+      <copyright>Copyright 2008 VOA</copyright>
+      <language>en</language>
+      <name>voa_cafe</name>
+      <medias/>
+      <URL>http://www.voanews.com/podcast/podcastxml_local.cfm?id=1691</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>Newshour</title>
+      <link>http://www.bbc.co.uk/worldservice/news/2009/03/000000_newshour.shtml</link>
+      <copyright>(c) BBC 2010</copyright>
+      <language>en-gb</language>
+      <name>bbc_news</name>
+      <medias/>
+      <URL>http://downloads.bbc.co.uk/podcasts/worldservice/newshour/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>60-Second Science</title>
+      <link>http://www.scientificamerican.com/podcast/</link>
+      <copyright>2010 Scientific American, a division of Nature America, Inc. All Rights Reserved.</copyright>
+      <language>en-us</language>
+      <name>60-Second-Science</name>
+      <medias/>
+      <URL>http://rss.sciam.com/sciam/60secsciencepodcast</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+    <com.hellocode.model.JDomPodCastURL>
+      <title>CNN News Update</title>
+      <link>http://www.cnn.com/services/podcasting?eref=newscast</link>
+      <copyright>2010 Cable News Network LP, LLLP. A Time Warner Company. All Rights Reserved.</copyright>
+      <language>en-us</language>
+      <name>CNN</name>
+      <medias/>
+      <URL>http://www.cnn.com/services/podcasting/newscast/rss.xml</URL>
+      <commnet></commnet>
+      <newCount>0</newCount>
+      <hasNew>false</hasNew>
+    </com.hellocode.model.JDomPodCastURL>
+  </feed__au>
+  <proxy__host>127.0.0.1</proxy__host>
+  <proxy__port>7070</proxy__port>
+  <proxy__name>                           </proxy__name>
+  <proxy__pswd>           </proxy__pswd>
+  <proxy__enabel>false</proxy__enabel>
+  <first__time__use>false</first__time__use>
+</com.hellocode.service.Config>
