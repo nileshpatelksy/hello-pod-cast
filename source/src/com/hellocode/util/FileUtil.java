@@ -26,7 +26,6 @@ public class FileUtil {
 		}
 
 		return;
-		// else 创建文件夹
 	}
 
 	/**
