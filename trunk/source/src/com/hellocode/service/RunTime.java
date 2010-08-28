@@ -45,7 +45,7 @@ public final class RunTime {
 			e.printStackTrace();
 			FileUtil.deleteFile(CONFIG_XML);
 			CONFIG = new Config();
-			CONFIG.first_time_use = true;
+			CONFIG.first_time_use = false;
 		}
 
 		FileUtil.createDir(CONFIG.disk_main);
@@ -89,6 +89,9 @@ public final class RunTime {
 								if(mark<=0){
 									PodCast.main.lb_info.setText("feed无法获取.原因:网络异常,请设置代理!");
 									PodCast.main.progress.setDone("feed无法获取.原因:网络异常,请设置代理!");
+									assert mark<=0;{
+										
+									}
 									throw new NetProblem();
 									
 								}

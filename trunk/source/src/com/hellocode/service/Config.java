@@ -1,6 +1,5 @@
 package com.hellocode.service;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.Authenticator;
 import java.net.HttpURLConnection;

@@ -44,7 +44,6 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.CellRendererPane;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -52,7 +51,6 @@ import javax.swing.plaf.ComponentUI;
 
 import com.hellocode.ui.mead.MeadProgress;
 import com.hellocode.ui.model.ProgressModel;
-import com.hellocode.ui.simple.JFlexiSlider;
 import com.hellocode.util.Util;
 
 /**

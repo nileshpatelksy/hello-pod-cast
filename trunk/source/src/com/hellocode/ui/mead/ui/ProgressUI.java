@@ -31,8 +31,6 @@ package com.hellocode.ui.mead.ui;
 
 import javax.swing.plaf.ComponentUI;
 
-import com.hellocode.ui.simple.JFlexiSlider;
-
 /**
  * UI for flexi slider ({@link JFlexiSlider}).
  * ×Ô¶¨Òå look and feel UI
