@@ -37,6 +37,10 @@ public class Util {
 	public static String getFileName(String url) {
 		int i = url.lastIndexOf('/');
 		String name = url.substring(i + 1);
+		i = name.lastIndexOf(Media.FILE_MP3);
+		if (i > 0) {
+			name = name.substring(0, i) + Media.FILE_MP3;
+		}
 		Util.print("extract file name :== " + name);
 		return name;
 	}

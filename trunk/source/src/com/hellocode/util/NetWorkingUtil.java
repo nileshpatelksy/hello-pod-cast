@@ -26,6 +26,7 @@ public class NetWorkingUtil {
 			urlc = (URLConnection) url.openConnection();
 			String type = urlc.getContentType();
 			Util.print("URL=:" + urlc.getURL());
+			Util.print("type=:" + type);
 			for (String s : urlc.getHeaderFields().keySet()) {
 				Util.print(s + " = " + urlc.getHeaderField(s));
 			}
@@ -50,10 +51,16 @@ public class NetWorkingUtil {
 //				Util.print("pathName=" + pathName);
 				abs_name = abs_file_name + File.separator
 						+ Util.getRandomFileName();
-				if (type.startsWith(Media.AUDIO)) {
-					abs_file_name += Media.FILE_MP3;
-				} else {
+				if (!type.startsWith(Media.AUDIO)) {
 					abs_file_name += Media.FILE_MP4;
+				} else {
+					abs_file_name += Media.FILE_MP3;
+				}
+				int i = abs_file_name.lastIndexOf(Media.FILE_MP3);
+				if (i > 0) {
+					name = name.substring(0, i) + Media.FILE_MP3;
+				}else{
+					name = name + Media.FILE_MP3;					
 				}
 				file = new File(abs_name);
 				Util.print("reConstruct file" + abs_name);
