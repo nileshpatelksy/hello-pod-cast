@@ -1,0 +1,4 @@
+#Update 'root' value
+#Tue Sep 21 15:43:03 CST 2010
+root=C\:\\PodCast\\ST_VOA\\
+feed=2
